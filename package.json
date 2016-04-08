@@ -1,0 +1,40 @@
+{
+  "name": "zendesk-editor",
+  "version": "0.0.1",
+  "description": "Rich text editor",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zendesk/zendesk-editor.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zendesk/zendesk-editor/issues"
+  },
+  "devDependencies": {
+    "babel-core": "6.x.x",
+    "babel-loader": "6.x.x",
+    "babel-preset-es2015": "6.x.x",
+    "babel-preset-react": "6.x.x",
+    "react-css-modules": "3.x.x",
+    "react-hot-loader": "1.x.x",
+    "webpack": "1.x.x",
+    "webpack-dev-server": "1.x.x"
+  },
+  "dependencies": {
+    "react": "0.14.6",
+    "react-dom": "0.14.6"
+  },
+  "babel": {
+    "presets": ["es2015", "react"]
+  },
+  "config": {
+    "proxy": 3000,
+    "privatePath": "/src/",
+    "publicPath": "/build/",
+    "main": "index.jsx"
+  }
+}
