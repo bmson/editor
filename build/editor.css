@@ -1,0 +1,14 @@
+.editor {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.editor .public-DraftEditorPlaceholder-root {
+  margin-bottom: -1em;
+  color: rgb(150, 150, 150);
+}
+
+
+.editor [role=textbox]:focus {
+  background: silver;
+}
