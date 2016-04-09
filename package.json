@@ -1,40 +1,35 @@
 {
   "name": "zendesk-editor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Rich text editor",
   "scripts": {
     "prestart": "npm install",
-    "start": "node server"
+    "start": "node build/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zendesk/zendesk-editor.git"
+    "url": "https://github.com/bmson/editor.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zendesk/zendesk-editor/issues"
+    "url": "https://github.com/bmson/editor/issues"
   },
   "devDependencies": {
-    "babel-core": "6.x.x",
-    "babel-loader": "6.x.x",
-    "babel-preset-es2015": "6.x.x",
-    "babel-preset-react": "6.x.x",
-    "react-css-modules": "3.x.x",
-    "react-hot-loader": "1.x.x",
-    "webpack": "1.x.x",
-    "webpack-dev-server": "1.x.x"
+    "reqly-react": "0.1.4"
   },
   "dependencies": {
-    "react": "0.14.6",
-    "react-dom": "0.14.6"
+    "react": "15.0.1",
+    "react-dom": "15.0.1",
+    "draft-js": "0.4.0"
   },
   "babel": {
     "presets": ["es2015", "react"]
   },
   "config": {
-    "proxy": 3000,
-    "privatePath": "/src/",
-    "publicPath": "/build/",
-    "main": "index.jsx"
+    "port": 3000,
+    "privatePath": "./src",
+    "privateFile": "index.jsx",
+    "publicPath": "./build",
+    "publicFile": "bundle.js"
   }
 }

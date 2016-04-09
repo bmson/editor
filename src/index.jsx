@@ -1,16 +1,10 @@
 // Dependencies
-import React from 'react';
-import ReactDom from 'react-dom';
-import Component from './component.jsx';
+import React    from 'react';
+import ReactDOM from 'react-dom';
+import Editor   from './components/editor.jsx';
 
-// Module definitions
-class App extends React.Component {
-
-  render () {
-    return <Component />;
-  }
-
-}
-
-// Render module
-ReactDom.render(<App/>, document.getElementById('root'));
+// Render
+ReactDOM.render(
+  <Editor />,
+  document.getElementById('target')
+);
