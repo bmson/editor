@@ -4,7 +4,7 @@
   "description": "Rich text editor",
   "scripts": {
     "prestart": "npm install",
-    "start": "node build/server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

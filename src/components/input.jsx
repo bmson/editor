@@ -14,14 +14,17 @@ class Input extends React.Component {
       editorState: EditorState.createEmpty()
     }
 
-    // Event handlers
+    const dispatcher = this.props.dispatcher
+    dispatcher.input = this
+    // componentDidMount
+    // componentWillUnmount
+
+    // Event handler
     this.onChange = (editorState) => this.setState({ editorState })
   }
 
   render() {
-    return  <Editor editorState={this.state.editorState}
-                    onChange={this.onChange}
-                    placeholder="something" />
+    return  <Editor onChange={this.onChange} editorState={this.state.editorState} {...this.props} />
   }
 
 }

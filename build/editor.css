@@ -4,11 +4,19 @@
 }
 
 .editor .public-DraftEditorPlaceholder-root {
-  margin-bottom: -1em;
+  padding: 11px;
+
+  position: absolute;
+  pointer-events: none;
+
   color: rgb(150, 150, 150);
 }
 
 
-.editor [role=textbox]:focus {
-  background: silver;
+.editor [role=textbox] {
+  padding: 10px;
+  min-height: 100px;
+
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 4px;
 }

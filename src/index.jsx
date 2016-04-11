@@ -4,10 +4,15 @@ import ReactDOM from 'react-dom'
 import Input    from './components/input.jsx'
 import Item     from './components/item.jsx'
 
+const dispatcher = {}
+
 // Toolbar
 const Toolbar = ({ children, ...refs }) =>
 
-  <div className="toolbar" {...refs}>
+  <div className="toolbar">
+    <Item name="bold" {...refs} />
+    <Item name="italic" {...refs} />
+    <Item name="underline" {...refs} />
     {children}
   </div>
 
@@ -15,17 +20,17 @@ const Toolbar = ({ children, ...refs }) =>
 const Editor = ({ children, ...refs }) =>
 
   <div className="editor" {...refs}>
-    <Input />
-    <Toolbar>
-      <Item type="bold" />
-      <Item type="italic" />
-      <Item type="underline" />
+    <Input dispatcher={dispatcher} {...refs} />
+    <Toolbar dispatcher={dispatcher}>
+      {children}
     </Toolbar>
-    {children}
   </div>
 
 // Render
 ReactDOM.render(
-  <Editor />,
+  <Editor placeholder="type something..." />,
   document.getElementById('target')
 )
+
+//
+export default Editor;
