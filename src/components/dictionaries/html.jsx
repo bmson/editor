@@ -1,25 +1,29 @@
 export default {
 
+  "break": {
+    "inner": ['<br />\n', '']
+  },
+
   "unstyled": {
-    "inner": ['<p>', '</p>']
+    "inner": ['<p>\n', '\n</p>\n\n']
   },
 
   "blockquote": {
-    "inner": ["<blockquote>", "</blockquote>"]
+    "inner": ["<blockquote>\n", "\n</blockquote>\n\n"]
   },
 
   "code-block": {
-    "inner": ["<pre>", "</pre>"]
+    "inner": ["<pre>\n", "\n</pre>\n\n"]
   },
 
   "ordered-list-item": {
-    "inner": ["<li>", "</li>"],
-    "outer": ["<ol>", "</ol"]
+    "outer": ["<ol>", "\n</ol>\n\n"],
+    "inner": ["\n  <li>", "</li>"]
   },
 
   "unordered-list-item": {
-    "inner": ["<li>", "</li>"],
-    "outer": ["<ul>", "</ul>"]
+    "outer": ["<ul>", "\n</ul>\n\n"],
+    "inner": ["\n  <li>", "</li>"]
   },
 
   "BOLD": {

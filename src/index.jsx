@@ -13,6 +13,7 @@ import Blockquote    from'./components/toolbar/block/blockquote.jsx'
 import UnorderedList from'./components/toolbar/block/unorderedList.jsx'
 import OrderedList   from'./components/toolbar/block/orderedList.jsx'
 import CodeBlock     from'./components/toolbar/block/codeBlock.jsx'
+import Preview       from'./components/preview.jsx'
 
 // Module definition
 export default class Editor extends React.Component {
@@ -22,27 +23,40 @@ export default class Editor extends React.Component {
     //
     const Toolbar = ({ children, ...props }) =>
 
-      <div className="toolbar">
-        <Bold className="bold" {...props} />
-        <Italic className="italic" {...props} />
-        <Underline className="underline" {...props} />
-        <Strikethrough className="strikethrough" {...props} />
-        <Code className="code" {...props} />
-        <Blockquote className="blockquote" {...props} />
-        <UnorderedList className="unorderedList" {...props} />
-        <OrderedList className="orderedList" {...props} />
-        <CodeBlock className="codeBlock" {...props} />
+      <div className='toolbar'>
+
+        <div className='group'>
+          <Bold className='bold' {...props} />
+          <Italic className='italic' {...props} />
+          <Underline className='underline' {...props} />
+          <Strikethrough className='strikethrough' {...props} />
+        </div>
+
+        <div className='group'>
+          <UnorderedList className='unorderedList' {...props} />
+          <OrderedList className='orderedList' {...props} />
+        </div>
+
+        <div className='group'>
+          <Code className='code' {...props} />
+          <Blockquote className='blockquote' {...props} />
+          <CodeBlock className='codeBlock' {...props} />
+        </div>
+
         {children}
       </div>
 
     // Editor
     const Container = ({ children, ...props }) =>
 
-      <div className="editor" {...props}>
+      <div className='editor' {...props}>
         <Textfield dispatcher={props.dispatcher} />
+
         <Toolbar dispatcher={props.dispatcher}>
           {children}
         </Toolbar>
+
+        <Preview dispatcher={props.dispatcher} />
       </div>
 
     //
@@ -57,6 +71,6 @@ export default class Editor extends React.Component {
 
 // Render
 ReactDOM.render(
-  <Editor placeholder="type something..." />,
+  <Editor placeholder='type something...' />,
   document.getElementById('target')
 )

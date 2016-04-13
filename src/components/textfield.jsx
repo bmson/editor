@@ -5,11 +5,6 @@ import {
   Editor,
   EditorState } from 'draft-js'
 
-
-// Local dependencies
-import converter  from'./converter.jsx'
-import dictionary from'./dictionaries/html.jsx'
-
 // Module definition
 export default class Textfield extends React.Component {
 
@@ -23,11 +18,6 @@ export default class Textfield extends React.Component {
 
   updateState(editorState) {
     this.setState({ editorState })
-
-    const content = editorState.getCurrentContent()
-    const converted = converter(content, dictionary);
-
-    console.log(converted);
   }
 
   componentDidMount() {
