@@ -2,11 +2,14 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
 
+import Converter from'./converter.jsx'
+
 // DraftJS Dependencies
 import {
   Editor,
   EditorState,
-  RichUtils } from 'draft-js'
+  RichUtils,
+  convertToRaw } from 'draft-js'
 
 // Module definition
 export default class Textfield extends React.Component {
@@ -21,6 +24,13 @@ export default class Textfield extends React.Component {
 
   updateState(editorState) {
     this.setState({ editorState })
+
+    const customState = editorState.getCurrentContent()
+    const raw = convertToRaw(customState)
+
+    const exporter = new Converter(raw);
+
+    console.log( exporter.export() );
   }
 
   componentDidMount() {

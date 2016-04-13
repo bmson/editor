@@ -2,13 +2,17 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
 
-//Local dependencies
+// Local dependencies
 import Textfield     from'./components/textfield.jsx'
-import Bold          from'./components/toolbar/bold.jsx'
-import Italic        from'./components/toolbar/italic.jsx'
-import Underline     from'./components/toolbar/underline.jsx'
-import Strikethrough from'./components/toolbar/strikethrough.jsx'
-import Code          from'./components/toolbar/code.jsx'
+import Bold          from'./components/toolbar/inline/bold.jsx'
+import Italic        from'./components/toolbar/inline/italic.jsx'
+import Underline     from'./components/toolbar/inline/underline.jsx'
+import Strikethrough from'./components/toolbar/inline/strikethrough.jsx'
+import Code          from'./components/toolbar/inline/code.jsx'
+import Blockquote    from'./components/toolbar/block/blockquote.jsx'
+import UnorderedList from'./components/toolbar/block/unorderedList.jsx'
+import OrderedList   from'./components/toolbar/block/orderedList.jsx'
+import CodeBlock     from'./components/toolbar/block/codeBlock.jsx'
 
 // Module definition
 export default class Editor extends React.Component {
@@ -19,11 +23,15 @@ export default class Editor extends React.Component {
     const Toolbar = ({ children, ...props }) =>
 
       <div className="toolbar">
-        <Bold logo="bold" {...props} />
-        <Italic logo="italic" {...props} />
-        <Underline logo="underline" {...props} />
-        <Strikethrough logo="strikethrough" {...props} />
-        <Code logo="code" {...props} />
+        <Bold className="bold" {...props} />
+        <Italic className="italic" {...props} />
+        <Underline className="underline" {...props} />
+        <Strikethrough className="strikethrough" {...props} />
+        <Code className="code" {...props} />
+        <Blockquote className="blockquote" {...props} />
+        <UnorderedList className="unorderedList" {...props} />
+        <OrderedList className="orderedList" {...props} />
+        <CodeBlock className="codeBlock" {...props} />
         {children}
       </div>
 

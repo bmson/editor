@@ -3,7 +3,7 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class Code extends React.Component {
+export default class Monospace extends React.Component {
 
   onClick() {
 
@@ -20,7 +20,7 @@ export default class Code extends React.Component {
   }
 
   render() {
-    return  <button onClick={this.onClick.bind(this)} {...this.props}>{this.props.logo}</button>
+    return  <button onClick={this.onClick.bind(this)} {...this.props} />
   }
 
 }

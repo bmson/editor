@@ -3,7 +3,7 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class Italic extends React.Component {
+export default class Blockquote extends React.Component {
 
   onClick() {
 
@@ -13,14 +13,14 @@ export default class Italic extends React.Component {
     //
     if (dispatcher && dispatcher.has('editor')) {
       const editor = dispatcher.get('editor')
-      const richUtils = RichUtils.toggleInlineStyle(editor.state.editorState, 'ITALIC')
+      const richUtils = RichUtils.toggleBlockType(editor.state.editorState, 'blockquote')
       editor.updateState(richUtils)
     }
 
   }
 
   render() {
-    return  <button onClick={this.onClick.bind(this)} {...this.props}>{this.props.logo}</button>
+    return  <button onClick={this.onClick.bind(this)} {...this.props} />
   }
 
 }
