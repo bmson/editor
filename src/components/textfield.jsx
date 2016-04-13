@@ -1,15 +1,14 @@
-// Dependencies
+// Global dependencies
 import React    from 'react'
 import ReactDOM from 'react-dom'
-
-import Converter from'./converter.jsx'
-
-// DraftJS Dependencies
 import {
   Editor,
-  EditorState,
-  RichUtils,
-  convertToRaw } from 'draft-js'
+  EditorState } from 'draft-js'
+
+
+// Local dependencies
+import converter  from'./converter.jsx'
+import dictionary from'./dictionaries/html.jsx'
 
 // Module definition
 export default class Textfield extends React.Component {
@@ -25,11 +24,10 @@ export default class Textfield extends React.Component {
   updateState(editorState) {
     this.setState({ editorState })
 
-    const customState = editorState.getCurrentContent()
-    const raw = convertToRaw(customState)
+    const content = editorState.getCurrentContent()
+    const converted = converter(content, dictionary);
 
-    const exporter = new Converter(raw);
-    console.log( exporter.export() );
+    console.log(converted);
   }
 
   componentDidMount() {

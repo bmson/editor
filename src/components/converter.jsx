@@ -1,56 +1,5 @@
-const FORMATS = {
-
-  "unstyled": {
-    "open": "<p>", // outer, inner: ['<p>', '</p>']
-    "close": "</p>"
-  },
-
-  "blockquote": {
-    "open": "<blockquote>",
-    "close": "</blockquote>"
-  },
-
-  "code-block": {
-    "open": "<pre>",
-    "close": "</pre>"
-  },
-
-  "ordered-list-item": {
-    "open": "<ol>",
-    "close": "</ol>"
-  },
-
-  "unordered-list-item": {
-    "open": "<ul>",
-    "close": "</ul>"
-  },
-
-  "BOLD": {
-    "open": "<strong>",
-    "close": "</strong>"
-  },
-
-  "ITALIC": {
-    "open": "<em>",
-    "close": "</em>"
-  },
-
-  "UNDERLINE": {
-    "open": "<u>",
-    "close": "</u>"
-  },
-
-  "STRIKETHROUGH": {
-    "open": "<strike>",
-    "close": "</strike>"
-  },
-
-  "CODE": {
-    "open": "<code>",
-    "close": "</code>"
-  }
-
-}
+// Dependencies
+import { convertToRaw } from 'draft-js'
 
 //
 const defineOffsets = (styles) => {
@@ -66,124 +15,84 @@ const defineOffsets = (styles) => {
 }
 
 //
-const inline = () => {
-}
-
-//
-const block = () => {
-}
-
-//
-const convert = (data, dictionary) => {
+const addInline = (block, dictionary, i) => {
 
   //
-  const blocks = data.blocks;
-  const html   = '';
+  const offsets = defineOffsets(block.inlineStyleRanges)
 
   //
-  blocks.map((block, i) => {
+  const text = block.text.charAt(i)
 
-    //
-    const offsets = defineOffsets(block.inlineStyleRanges)
+  //
+  const open = offsets.map((offset) => {
 
-    //
-    const prev = blocks[i - 1] || {};
-    const next = blocks[i + 1] || {};
-
-    //
-    if (block.type !== prev.type) {
-      html += dictionary[block.type].outer[0]
-    else
-      html += '<br />'
-
-    //
-    html += dictionary[block.type].inner[0]
-
-    //
-    for(let i = 0; i < block.text.length; i++){
-      html += this.checkStylesBefore(i);
-      html += block.text.charAt(i);
-      html += this.checkStylesAfter(i + 1);
-    }
-
-    //
-    html += dictionary[block.type].inner[1]
-
-    //
-    if (block.type !== next.type)
-      html += dictionary[block.type].outer[1]
+    if(i === offset.start && dictionary[offset.style])
+      return dictionary[offset.style].inner[0]
 
   });
 
-  //const offset = defineOffsets()
+  //
+  const close = offsets.map((offset) => {
+
+    if(i+1 === offset.end && dictionary[offset.style])
+      return dictionary[offset.style].inner[1]
+
+  });
+
+  //
+  return [].concat(open, text, close).join('')
 
 }
 
+//
+const addBlock = (text, dictionary, block) => {
 
+  //
+  const isFirst = (block.current.type !== block.previous.type)
+  const isLast  = (block.current.type !== block.next.type)
 
-export default class Converter {
+  //
+  const dictionaryType = dictionary[block.current.type];
 
-  constructor(rawData){
-    this.rawData = rawData;
-    this.offsets = [];
-    this.formatter = FORMATS;
+  //
+  const outer = {
+    open:  isFirst && dictionaryType.outer ? dictionaryType.outer[0] : '',
+    close: isLast  && dictionaryType.outer ? dictionaryType.outer[1] : '',
   }
 
-  defineOffsets(inlineStyles){
-    inlineStyles.map((metadata) => {
-      let offset = {};
-      offset.start = metadata.offset;
-      offset.end = metadata.offset + metadata.length;
-      offset.style = metadata.style;
-      this.offsets.push(offset);
-    });
+  const inner = {
+    open:  isFirst || dictionaryType.outer ? dictionaryType.inner[0] : '',
+    close: isLast  || dictionaryType.outer ? dictionaryType.inner[1] : '<br />',
   }
 
-  checkStylesBefore(index){
-    let formatter = this.formatter;
-    let text = "";
-    this.offsets.map((offset) => {
-      if(index == offset.start && formatter[offset.style] != null) text += formatter[offset.style].open;
-    });
-    return text;
-  }
+  return `${outer.open}${inner.open}${text}${inner.close}${outer.close}`
 
-  checkStylesAfter(index){
-    let formatter = this.formatter;
-    let text = "";
-    this.offsets.map((offset) => {
-      if(index == offset.end && formatter[offset.style] != null) text += formatter[offset.style].close;
-    });
-    return text;
-  }
+}
 
-  export(){
-    let blocks = this.rawData.blocks;
-    let exportText = "";
+//
+export default (state, dictionary) => {
 
-    blocks.map((block, index) => {
-      this.defineOffsets(block.inlineStyleRanges);
+  //
+  const blocks = convertToRaw(state).blocks
 
-      const prev = blocks[index-1];
-      const next = blocks[index+1];
+  //
+  return blocks.map((block, i) => {
 
-      if (block.type !== (prev && prev.type)) {
-        exportText += this.formatter[block.type].open;
-      } else {
-        exportText += '<br/>';
-      }
+    //
+    const prev = blocks[i - 1] || {}
+    const next = blocks[i + 1] || {}
 
-      for(let i = 0; i < block.text.length; i++){
-        exportText += this.checkStylesBefore(i);
-        exportText += block.text.charAt(i);
-        exportText += this.checkStylesAfter(i + 1);
-      }
+    //
+    const fn = (value, i) => addInline(block, dictionary, i);
+    const text = [...block.text].map(fn).join('');
 
-      if (block.type !== (next && next.type)) {
-        exportText += this.formatter[block.type].close;
-      }
-    });
-    return exportText;
-  }
+    //
+    return addBlock(text, dictionary, {
+      current:  block,
+      previous: blocks[i - 1] || {},
+      next:     blocks[i + 1] || {},
+    })
+
+  }).join('')
 
 }

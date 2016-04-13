@@ -1,4 +1,4 @@
-// Dependencies
+// Global dependencies
 import React    from 'react'
 import ReactDOM from 'react-dom'
 
