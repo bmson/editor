@@ -29,7 +29,6 @@ export default class Textfield extends React.Component {
     const raw = convertToRaw(customState)
 
     const exporter = new Converter(raw);
-
     console.log( exporter.export() );
   }
 
