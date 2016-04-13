@@ -1,9 +1,8 @@
 // Global dependencies
 import React    from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Editor,
-  EditorState } from 'draft-js'
+import { Editor, EditorState } from 'draft-js'
+import Dispatcher from'./dispatcher.jsx'
 
 // Module definition
 export default class Textfield extends React.Component {
@@ -21,11 +20,13 @@ export default class Textfield extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatcher.set('editor', this);
+    const dispatcher = new Dispatcher(this.props.dispatcher)
+    dispatcher.mount('editor', this)
   }
 
   componentWillUnmount() {
-    this.props.dispatcher.delete('editor', this);
+    const dispatcher = new Dispatcher(this.props.dispatcher)
+    dispatcher.unmount('editor', this)
   }
 
   render() {

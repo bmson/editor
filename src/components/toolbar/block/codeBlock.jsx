@@ -1,6 +1,7 @@
 // Dependencies
 import React from 'react'
 import { RichUtils } from 'draft-js';
+import Dispatcher from'./../../dispatcher.jsx'
 
 // Module definition
 export default class CodeBlock extends React.Component {
@@ -8,14 +9,13 @@ export default class CodeBlock extends React.Component {
   onClick() {
 
     //
-    const dispatcher = this.props.dispatcher;
+    const dispatcher = new Dispatcher(this.props.dispatcher);
 
     //
-    if (dispatcher && dispatcher.has('editor')) {
-      const editor = dispatcher.get('editor')
-      const richUtils = RichUtils.toggleBlockType(editor.state.editorState, 'code-block')
-      editor.updateState(richUtils)
-    }
+    dispatcher.connect('editor', component => {
+      const richUtils = RichUtils.toggleBlockType(component.state.editorState, 'code-block')
+      component.updateState(richUtils)
+    })
 
   }
 

@@ -3,7 +3,11 @@ import React    from 'react'
 import ReactDOM from 'react-dom'
 
 // Local dependencies
-import Textfield     from'./components/textfield.jsx'
+import Textfield  from'./components/textfield.jsx'
+import Preview    from'./components/preview.jsx'
+import Dispatcher from'./components/dispatcher.jsx'
+
+// Toolbar dependencies
 import Bold          from'./components/toolbar/inline/bold.jsx'
 import Italic        from'./components/toolbar/inline/italic.jsx'
 import Underline     from'./components/toolbar/inline/underline.jsx'
@@ -13,7 +17,6 @@ import Blockquote    from'./components/toolbar/block/blockquote.jsx'
 import UnorderedList from'./components/toolbar/block/unorderedList.jsx'
 import OrderedList   from'./components/toolbar/block/orderedList.jsx'
 import CodeBlock     from'./components/toolbar/block/codeBlock.jsx'
-import Preview       from'./components/preview.jsx'
 
 // Module definition
 export default class Editor extends React.Component {
@@ -60,7 +63,7 @@ export default class Editor extends React.Component {
       </div>
 
     //
-    const dispatcher = new Map()
+    const dispatcher = new Dispatcher()
 
     //
     return <Container dispatcher={dispatcher} {...this.props} />
