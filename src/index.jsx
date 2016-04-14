@@ -24,6 +24,13 @@ export default class Editor extends React.Component {
   render () {
 
     //
+    const dispatcher = new Dispatcher()
+
+    //
+    const fnChildren = (child) => React.cloneElement(child, { dispatcher: dispatcher })
+    const childrenProps = React.Children.map(this.props.children, fnChildren);
+
+    //
     const Toolbar = ({ children, ...props }) =>
 
       <div className='toolbar'>
@@ -56,14 +63,11 @@ export default class Editor extends React.Component {
         <Textfield dispatcher={props.dispatcher} />
 
         <Toolbar dispatcher={props.dispatcher}>
-          {children}
+          {childrenProps}
         </Toolbar>
 
         <Preview dispatcher={props.dispatcher} />
       </div>
-
-    //
-    const dispatcher = new Dispatcher()
 
     //
     return <Container dispatcher={dispatcher} {...this.props} />
@@ -74,6 +78,8 @@ export default class Editor extends React.Component {
 
 // Render
 ReactDOM.render(
-  <Editor placeholder='type something...' />,
+  <Editor placeholder='type something...'>
+    <CodeBlock className='codeBlock' />
+  </Editor>,
   document.getElementById('target')
 )

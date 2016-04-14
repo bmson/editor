@@ -1,5 +1,4 @@
 // Dependencies
-var path  = require('path');
 var reqly = require('reqly-react');
 var pkg   = require('./package.json');
 
