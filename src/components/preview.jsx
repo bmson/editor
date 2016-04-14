@@ -10,12 +10,8 @@ import dictionary from'./dictionaries/html.jsx'
 // Module definition
 export default class Preview extends React.Component {
 
-  constructor() {
-    super(...arguments)
-
-    this.state = {
-      compiled: ''
-    }
+  state = {
+    compiled: ''
   }
 
   componentDidMount() {

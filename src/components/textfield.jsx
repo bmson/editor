@@ -7,12 +7,8 @@ import Dispatcher from'./dispatcher.jsx'
 // Module definition
 export default class Textfield extends React.Component {
 
-  constructor() {
-    super(...arguments)
-
-    this.state = {
-      editorState: EditorState.createEmpty()
-    }
+  state = {
+    editorState: EditorState.createEmpty()
   }
 
   updateState(editorState) {
