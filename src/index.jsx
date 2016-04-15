@@ -21,13 +21,13 @@ import CodeBlock     from'./components/toolbar/block/codeBlock.jsx'
 // Module definition
 export default class Editor extends React.Component {
 
+  dispatcher = {
+  }
+
   render () {
 
     //
-    const dispatcher = new Dispatcher()
-
-    //
-    const fnChildren = (child) => React.cloneElement(child, { dispatcher: dispatcher })
+    const fnChildren = (child) => React.cloneElement(child, { dispatcher: this.dispatcher })
     const childrenProps = React.Children.map(this.props.children, fnChildren);
 
     //
@@ -70,7 +70,7 @@ export default class Editor extends React.Component {
       </div>
 
     //
-    return <Container dispatcher={dispatcher} {...this.props} />
+    return <Container dispatcher={this.dispatcher} {...this.props} />
 
   }
 

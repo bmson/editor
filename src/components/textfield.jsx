@@ -16,13 +16,11 @@ export default class Textfield extends React.Component {
   }
 
   componentDidMount() {
-    const dispatcher = new Dispatcher(this.props.dispatcher)
-    dispatcher.mount('editor', this)
+    this.props.dispatcher.editor = this;
   }
 
   componentWillUnmount() {
-    const dispatcher = new Dispatcher(this.props.dispatcher)
-    dispatcher.unmount('editor', this)
+    delete this.props.dispatcher.editor;
   }
 
   render() {

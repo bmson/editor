@@ -16,18 +16,16 @@ export default class Preview extends React.Component {
 
   componentDidMount() {
 
-    //
-    const dispatcher = new Dispatcher(this.props.dispatcher)
+    const editor = this.props.dispatcher.editor
 
-    //
-    dispatcher.connect('editor', component => component.componentDidUpdate = () => {
+    editor.componentDidUpdate = () => {
 
-      const content  = component.state.editorState.getCurrentContent()
+      const content  = editor.state.editorState.getCurrentContent()
       const compiled = converter(content, dictionary)
 
       this.setState({ compiled })
 
-    })
+    }
 
   }
 

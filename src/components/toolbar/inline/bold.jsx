@@ -8,14 +8,10 @@ export default class Item extends React.Component {
 
   onClick() {
 
-    //
-    const dispatcher = new Dispatcher(this.props.dispatcher);
+    const editor = this.props.dispatcher.editor
 
-    //
-    dispatcher.connect('editor', component => {
-      const richUtils = RichUtils.toggleInlineStyle(component.state.editorState, 'BOLD')
-      component.updateState(richUtils)
-    })
+    const richUtils = RichUtils.toggleInlineStyle(editor.state.editorState, 'BOLD')
+    editor.updateState(richUtils)
 
   }
 
