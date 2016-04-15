@@ -1,26 +1,23 @@
 // Dependencies
 import React from 'react'
 import { RichUtils } from 'draft-js';
-import Dispatcher from'./../../dispatcher.jsx'
 
 // Module definition
-export default class Blockquote extends React.Component {
+export default class Item extends React.Component {
 
   onClick() {
 
     //
-    const dispatcher = new Dispatcher(this.props.dispatcher)
+    const { editorState, onChange } = this.props;
 
     //
-    dispatcher.connect('editor', component => {
-      const richUtils = RichUtils.toggleBlockType(component.state.editorState, 'blockquote')
-      component.updateState(richUtils)
-    })
+    const richUtils = RichUtils.toggleBlockType(editorState, 'blockquote')
+    onChange(richUtils)
 
   }
 
   render() {
-    return  <button onClick={() => this.onClick()} {...this.props} />
+    return <button onMouseDown={e => this.onClick(e)} {...this.props} />
   }
 
 }

@@ -1,22 +1,23 @@
 // Dependencies
 import React from 'react'
 import { RichUtils } from 'draft-js';
-import Dispatcher from'./../../dispatcher.jsx'
 
 // Module definition
 export default class Item extends React.Component {
 
   onClick() {
 
-    const editor = this.props.dispatcher.editor
+    //
+    const { editorState, onChange } = this.props;
 
-    const richUtils = RichUtils.toggleInlineStyle(editor.state.editorState, 'BOLD')
-    editor.updateState(richUtils)
+    //
+    const richUtils = RichUtils.toggleInlineStyle(editorState, 'BOLD')
+    onChange(richUtils)
 
   }
 
   render() {
-    return  <button onClick={this.onClick.bind(this)} {...this.props} />
+    return <button onMouseDown={e => this.onClick(e)} {...this.props} />
   }
 
 }

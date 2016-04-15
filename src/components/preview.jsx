@@ -3,7 +3,6 @@ import React from 'react'
 import { EditorState } from 'draft-js'
 
 // Local dependencies
-import Dispatcher from'./dispatcher.jsx'
 import converter from'./converter.jsx'
 import dictionary from'./dictionaries/html.jsx'
 
@@ -16,16 +15,15 @@ export default class Preview extends React.Component {
 
   componentDidMount() {
 
-    const editor = this.props.dispatcher.editor
+    //
+    const { editorState } = this.props;
 
-    editor.componentDidUpdate = () => {
+    //
+    const content  = editorState.getCurrentContent()
+    const compiled = converter(content, dictionary)
 
-      const content  = editor.state.editorState.getCurrentContent()
-      const compiled = converter(content, dictionary)
-
-      this.setState({ compiled })
-
-    }
+    //
+    this.setState({ compiled })
 
   }
 

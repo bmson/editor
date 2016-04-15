@@ -1,26 +1,23 @@
 // Dependencies
 import React from 'react'
 import { RichUtils } from 'draft-js';
-import Dispatcher from'./../../dispatcher.jsx'
 
 // Module definition
-export default class UnorderedList extends React.Component {
+export default class Item extends React.Component {
 
   onClick() {
 
     //
-    const dispatcher = new Dispatcher(this.props.dispatcher);
+    const { editorState, onChange } = this.props;
 
     //
-    dispatcher.connect('editor', component => {
-      const richUtils = RichUtils.toggleBlockType(component.state.editorState, 'unordered-list-item')
-      component.updateState(richUtils)
-    })
+    const richUtils = RichUtils.toggleBlockType(editorState, 'unordered-list-item')
+    onChange(richUtils)
 
   }
 
   render() {
-    return  <button onClick={this.onClick.bind(this)} {...this.props} />
+    return <button onMouseDown={e => this.onClick(e)} {...this.props} />
   }
 
 }
