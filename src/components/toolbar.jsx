@@ -26,21 +26,21 @@ export default ({ children, ...props }) =>
   <div className='toolbar'>
 
     <div className='group'>
-      <Bold className='bold' {...props} />
-      <Italic className='italic' {...props} />
-      <Underline className='underline' {...props} />
-      <Strikethrough className='strikethrough' {...props} />
+      <Bold className='bold' tooltip='Bold style' {...props} />
+      <Italic className='italic' tooltip='Italic style' {...props} />
+      <Underline className='underline' tooltip='Underline style'  {...props} />
+      <Strikethrough className='strikethrough' tooltip='Strikethrough style' {...props} />
     </div>
 
     <div className='group'>
-      <UnorderedList className='unorderedList' {...props} />
-      <OrderedList className='orderedList' {...props} />
+      <UnorderedList className='unorderedList' tooltip='Unordered list style' {...props} />
+      <OrderedList className='orderedList' tooltip='Ordered list style' {...props} />
     </div>
 
     <div className='group'>
-      <Code className='code' {...props} />
-      <Blockquote className='blockquote' {...props} />
-      <CodeBlock className='codeBlock' {...props} />
+      <Code className='code' tooltip='Code style' {...props} />
+      <Blockquote className='blockquote' tooltip='Blockquote style' {...props} />
+      <CodeBlock className='codeBlock' tooltip='Codeblock style' {...props} />
     </div>
 
     {bindProps(children, props)}

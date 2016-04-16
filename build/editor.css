@@ -36,11 +36,19 @@
   border-radius: 0 0 4px 4px;
 }
 
+.toolbar:before,
+.toolbar:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 .toolbar .group {
   padding-right: 5px;
   margin-right: 5px;
 
-  display: inline-block;
+  display: block;
+  float: left;
   border-right: 1px solid rgb(210, 210, 210);
 }
 
@@ -51,6 +59,11 @@
 .toolbar button {
   height: 26px;
   width: 26px;
+
+  display: block;
+  float: left;
+
+  position: relative;
 
   border: 0;
   border-radius: 2px;
@@ -66,6 +79,70 @@
 .toolbar button:active {
   box-shadow: inset 0 0 2px rgba(0, 0, 0, .4);
   background-color: rgb(250, 250, 250);
+}
+
+.toolbar button[data-tooltip]::before {
+  content: attr(data-tooltip);
+	position: absolute;
+	font-size: 11px;
+  white-space: nowrap;
+
+	padding: 4px;
+  display: none;
+
+  bottom: 35px;
+  left: 13px;
+
+  color: rgb(255, 255, 255);
+  background: rgba(25, 25, 25, .85);
+  border-radius: 3px;
+  transform: translateX(-50%);
+}
+
+.toolbar button[data-tooltip]::after {
+  height: 0;
+  width: 0;
+  content: '';
+	position: absolute;
+
+  display: none;
+
+  bottom: 25px;
+  left: 13px;
+
+  transform: translateX(-50%);
+
+  border-top: 5px solid rgba(25, 25, 25, .85);
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.toolbar button[data-tooltip]:hover::before,
+.toolbar button[data-tooltip]:hover::after {
+  display: block;
+
+  animation-duration: 1s;
+  animation-name: fadeIn
+}
+
+@keyframes fadeIn {
+  0% {
+    visibility: hidden;
+  }
+
+  90% {
+    visibility: hidden;
+  }
+
+  91% {
+    visibility: visible;
+    margin-bottom: 2px;
+  }
+
+  100% {
+    margin-bottom: 0;
+  }
 }
 
 button.bold {

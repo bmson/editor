@@ -17,16 +17,16 @@ export default class App extends React.Component {
 
     <div className='editor' {...this.props}>
 
-      <Editor onChange = {editorState => this.setState({editorState})}
-              editorState = {this.state.editorState}
-              placeholder = {this.props.placeholder} />
+      <Editor onChange={editorState => this.setState({editorState})}
+              editorState={this.state.editorState}
+              placeholder={this.props.placeholder} />
 
-      <Toolbar onChange = {editorState => this.setState({editorState})}
-               editorState = {this.state.editorState}
-               children = {this.props.children}>
+      <Toolbar onChange={editorState => this.setState({editorState})}
+               editorState={this.state.editorState}
+               children={this.props.children}>
       </Toolbar>
 
-      <Preview editorState = {this.state.editorState} />
+      <Preview editorState={this.state.editorState} />
 
     </div>
 
