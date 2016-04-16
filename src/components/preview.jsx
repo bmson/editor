@@ -1,34 +1,25 @@
 // Global dependencies
 import React from 'react'
-import { EditorState } from 'draft-js'
 
 // Local dependencies
-import converter from'./converter.jsx'
-import dictionary from'./dictionaries/html.jsx'
+import converter from'./preview.assets/converter.jsx'
+import dictionary from'./preview.assets/dictionaries/html.jsx'
 
 // Module definition
 export default class Preview extends React.Component {
 
-  state = {
-    compiled: ''
-  }
-
-  componentDidMount() {
+  format(state) {
 
     //
-    const { editorState } = this.props;
-
-    //
-    const content  = editorState.getCurrentContent()
+    const content  = state.getCurrentContent()
     const compiled = converter(content, dictionary)
 
     //
-    this.setState({ compiled })
+    return compiled
 
   }
 
-  render() {
-    return <pre className='preview'>{this.state.compiled}</pre>
-  }
+  render = () =>
+    <pre className='preview'>{this.format(this.props.editorState)}</pre>
 
 }

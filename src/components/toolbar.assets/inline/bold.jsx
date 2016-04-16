@@ -11,13 +11,12 @@ export default class Item extends React.Component {
     const { editorState, onChange } = this.props;
 
     //
-    const richUtils = RichUtils.toggleBlockType(editorState, 'blockquote')
+    const richUtils = RichUtils.toggleInlineStyle(editorState, 'BOLD')
     onChange(richUtils)
 
   }
 
-  render() {
-    return <button onMouseDown={e => this.onClick(e)} {...this.props} />
-  }
+  render = () =>
+    <button onMouseDown={e => this.onClick(e)} {...this.props} />
 
 }

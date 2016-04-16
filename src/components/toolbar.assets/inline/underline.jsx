@@ -16,8 +16,7 @@ export default class Item extends React.Component {
 
   }
 
-  render() {
-    return <button onMouseDown={e => this.onClick(e)} {...this.props} />
-  }
+  render = () =>
+    <button onMouseDown={e => this.onClick(e)} {...this.props} />
 
 }
