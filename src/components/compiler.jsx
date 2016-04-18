@@ -74,7 +74,8 @@ const addBlock = (text, dictionary = {}, block = {}) => {
 export default (state, dictionary = {}) => {
 
   //
-  const blocks = convertToRaw(state).blocks
+  const content = state.getCurrentContent()
+  const blocks  = convertToRaw(content).blocks
 
   //
   return blocks.map((block, i) => {

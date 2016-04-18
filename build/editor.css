@@ -21,12 +21,26 @@
 }
 
 .editor .preview {
-  padding: 10px;
+  margin-top: 10px;
+  font-size: 10px;
 
   border: 1px solid rgb(200, 200, 200);
   border-radius: 4px;
+}
 
-  font-size: 10px;
+.editor .preview .selection {
+  border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.editor .preview .selection div {
+  padding: 5px 10px;
+  display: inline-block;
+  border-right: 1px solid rgb(230, 230, 230);
+}
+
+.editor .preview .output {
+  margin: 0;
+  padding: 10px;
 }
 
 .toolbar {
@@ -64,6 +78,7 @@
   float: left;
 
   position: relative;
+  outline: 0;
 
   border: 0;
   border-radius: 2px;
