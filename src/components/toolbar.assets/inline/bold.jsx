@@ -3,9 +3,9 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class Item extends React.Component {
+export default class Bold extends React.Component {
 
-  onClick() {
+  onClick(e) {
 
     //
     const { editorState, onChange } = this.props;
@@ -13,6 +13,9 @@ export default class Item extends React.Component {
     //
     const richUtils = RichUtils.toggleInlineStyle(editorState, 'BOLD')
     onChange(richUtils)
+
+    //
+    e.preventDefault()
 
   }
 

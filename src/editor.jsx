@@ -27,11 +27,9 @@ export default class App extends React.Component {
 
       <Editor onChange = { editorState => this.setState({editorState}) }
               editorState = { this.state.editorState }
-              placeholder = { this.props.placeholder }
-              ref = 'editor' />
+              placeholder = { this.props.placeholder } />
 
       <Toolbar onChange = { editorState => this.setState({editorState}) }
-               onClick = { e => this.refs.editor.focus() }
                editorState = { this.state.editorState }
                children = { this.props.children } />
 

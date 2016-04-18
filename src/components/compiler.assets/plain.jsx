@@ -24,26 +24,6 @@ export default {
   "unordered-list-item": {
     "outer": ["", "\n\n"],
     "inner": ["\n\t● ", ""]
-  },
-
-  "BOLD": {
-    "inner": ["", ""]
-  },
-
-  "ITALIC": {
-    "inner": ["", ""]
-  },
-
-  "UNDERLINE": {
-    "inner": ["", ""]
-  },
-
-  "STRIKETHROUGH": {
-    "inner": ["", ""]
-  },
-
-  "CODE": {
-    "inner": ["", ""]
   }
 
 }

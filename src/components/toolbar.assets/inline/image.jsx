@@ -3,7 +3,7 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class Italic extends React.Component {
+export default class Image extends React.Component {
 
   onClick(e) {
 
@@ -11,7 +11,7 @@ export default class Italic extends React.Component {
     const { editorState, onChange } = this.props;
 
     //
-    const richUtils = RichUtils.toggleInlineStyle(editorState, 'ITALIC')
+    const richUtils = RichUtils.toggleInlineStyle(editorState, 'IMAGE')
     onChange(richUtils)
 
     //
@@ -19,7 +19,7 @@ export default class Italic extends React.Component {
 
   }
 
-  render= () =>
+  render = () =>
     <button onMouseDown={e => this.onClick(e)}
             data-tooltip={this.props.tooltip}
             {...this.props} />

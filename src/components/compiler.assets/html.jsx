@@ -26,6 +26,10 @@ export default {
     "inner": ["\n  <li>", "</li>"]
   },
 
+  "IMAGE": {
+    "inner": ["<img src='$0' />", ""]
+  },
+
   "BOLD": {
     "inner": ["<strong>", "</strong>"]
   },
