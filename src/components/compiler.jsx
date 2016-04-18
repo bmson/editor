@@ -118,6 +118,8 @@ export default (state, dictionary = {}) => {
       }
     })
 
+    merge = merge.filter(e => e)
+
     console.log(merge)
 
     //
