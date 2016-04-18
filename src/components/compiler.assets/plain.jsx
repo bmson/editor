@@ -17,7 +17,7 @@ export default {
   },
 
   "ordered-list-item": {
-    "outer": ["", "\n\n"],
+    "outer": ["", "\n"],
     "inner": ["\n\t● ", ""]
   },
 
