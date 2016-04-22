@@ -8,10 +8,10 @@ import Preview  from'./components/preview.jsx'
 import compiler from'./components/compiler.jsx'
 
 // Dictionaries
-import html     from'./components/compiler.assets/html.jsx'
-import plain    from'./components/compiler.assets/plain.jsx'
-import markdown from'./components/compiler.assets/markdown.jsx'
-import jira     from'./components/compiler.assets/jira.jsx'
+import html     from'./components/dictionaries/html.jsx'
+import plain    from'./components/dictionaries/plain.jsx'
+import markdown from'./components/dictionaries/markdown.jsx'
+import jira     from'./components/dictionaries/jira.jsx'
 
 // Module definition
 export default class App extends React.Component {
@@ -34,10 +34,10 @@ export default class App extends React.Component {
                children = { this.props.children } />
 
       <Preview editorState = { compiler(this.state.editorState, this.state.dictionary) }>
-        <div onClick = { e => this.setState({ dictionary:html }) }>html</div>
-        <div onClick = { e => this.setState({ dictionary:plain }) }>plain</div>
-        <div onClick = { e => this.setState({ dictionary:markdown }) }>markdown</div>
-        <div onClick = { e => this.setState({ dictionary:jira }) }>jira</div>
+        <div onClick = { e => this.setState({ dictionary: html }) }>html</div>
+        <div onClick = { e => this.setState({ dictionary: plain }) }>plain</div>
+        <div onClick = { e => this.setState({ dictionary: markdown }) }>markdown</div>
+        <div onClick = { e => this.setState({ dictionary: jira }) }>jira</div>
       </Preview>
 
     </div>
