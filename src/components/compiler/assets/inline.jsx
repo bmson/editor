@@ -1,4 +1,18 @@
-// Module definition
+const toggle = (array, value) => {
+  var index = array.indexOf(value);
+
+  var copy = [].concat(array);
+
+  if (index === -1) {
+    copy.push(value);
+  } else {
+    copy.splice(index, 1);
+  }
+
+  return copy;
+}
+
+//
 const inject = (input, child, index) => {
 
   //
@@ -12,7 +26,7 @@ const inject = (input, child, index) => {
 
 }
 
-// Module definition
+//
 const splitter = (input, position, iterator) => {
 
   //
@@ -24,10 +38,14 @@ const splitter = (input, position, iterator) => {
   const to    = position.to - adjust
 
   //
+  const curType = input[index] && input[index].type
+  const curStyle = input[index] && input[index].style
+
+  //
   const child = {
-    previous:  { text: value.slice(0, from), style: input[index] && input[index].style },
-    current:   { text: value.slice(from, to), style: position.style },
-    next:      { text: value.slice(to, value.length), style: input[index] && input[index].style },
+    previous:  { text: value.slice(0, from), type: curType, style:curStyle }, // remove position from curStyle ????
+    current:   { text: value.slice(from, to), type: toggle(curType, position.style), style: position.style },
+    next:      { text: value.slice(to, value.length), type: curType, style:curStyle }, // remove position from curStyle
   }
 
   //
@@ -38,7 +56,7 @@ const splitter = (input, position, iterator) => {
 
 }
 
-// Module definition
+//
 export const walker = (input, position, iterator) => {
 
   //
@@ -79,6 +97,7 @@ export const walker = (input, position, iterator) => {
 
 }
 
+//
 export default (input, range, dictionary = {}) => {
 
   //
