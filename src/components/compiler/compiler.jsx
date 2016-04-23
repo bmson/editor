@@ -16,7 +16,7 @@ export default (state, dictionary = {}) => {
   const compile = (block, index) => {
 
     //
-    const text = [{ text: block.text }]
+    const text = [{ text: block.text, type:'' }]
     const range = block.inlineStyleRanges
 
     //

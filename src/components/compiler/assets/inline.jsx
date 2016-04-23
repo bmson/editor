@@ -19,15 +19,15 @@ const splitter = (input, position, iterator) => {
   const { index, adjust } = iterator
 
   //
-  const value = input[index].text
+  const value = input[index] && input[index].text || ''
   const from  = position.from - adjust
   const to    = position.to - adjust
 
   //
   const child = {
-    previous:  { text: value.slice(0, from) },
-    current:   { text: value.slice(from, to) },
-    next:      { text: value.slice(to, value.length) },
+    previous:  { text: value.slice(0, from), style: input[index] && input[index].style },
+    current:   { text: value.slice(from, to), style: position.style },
+    next:      { text: value.slice(to, value.length), style: input[index] && input[index].style },
   }
 
   //
@@ -46,7 +46,7 @@ export const walker = (input, position, iterator) => {
   const { index, adjust } = iterator
 
   //
-  const length = input[index].text.length
+  const length = input[index] && input[index].text.length
 
   //
   if (from - adjust >= length) {
@@ -66,7 +66,8 @@ export const walker = (input, position, iterator) => {
 
       walker(input, {
         from: from + (child.current).text.length,
-        to: to
+        to: to,
+        style: (child.current).style
       }, {
         index: index + 1,
         adjust: adjust + length - (child.current).text.length
@@ -82,8 +83,8 @@ export default (input, range, dictionary = {}) => {
 
   //
   const position = {
-    from:  range.offset,
-    to:    range.offset + range.length,
+    from: range.offset,
+    to:   range.offset + range.length,
     style: range.style
   }
 
