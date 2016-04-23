@@ -115,4 +115,22 @@ export default (input, range, dictionary = {}) => {
   //
   walker(input, position, iterator)
 
+  //
+  const a = input.map(i => {
+
+    //
+    let val = i.text
+
+    //
+    i.type.forEach(o => {
+      val = dictionary[o] && dictionary[o].call(this, { nodeValue: val }) || val
+    })
+
+    //
+    return val;
+
+  })
+
+  return a
+
 }

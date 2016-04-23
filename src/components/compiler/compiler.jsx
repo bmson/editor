@@ -20,12 +20,14 @@ export default (state, dictionary = {}) => {
     const range = block.inlineStyleRanges
 
     //
-    range.forEach(range => addInline(text, range, dictionary))
-
-    console.log(text)
+    let inline = [text.text];
+    range.map(range => {
+      const v = addInline(text, range, dictionary)
+      inline = v
+    })
 
     //
-    return addBlock(text.join('.'), dictionary, {
+    return addBlock(inline.join(''), dictionary, {
       previous: blocks[index - 1] || {},
       current:  blocks[index + 0] || {},
       next:     blocks[index + 1] || {},
