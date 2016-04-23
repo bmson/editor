@@ -2,7 +2,7 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
 import Editor   from'./editor.jsx'
-import Image    from'./components/toolbar.assets/inline/image.jsx'
+import Image    from'./components/toolbar/inline/image.jsx'
 
 // Render
 ReactDOM.render(

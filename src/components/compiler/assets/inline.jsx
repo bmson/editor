@@ -1,7 +1,7 @@
 // Local dependencies
-import walker from './walker.jsx'
-import splitter from './splitter.jsx'
-import inject from './inject.jsx'
+import walker from './inline.assets/walker.jsx'
+import splitter from './inline.assets/splitter.jsx'
+import inject from './inline.assets/inject.jsx'
 
 // Module definition
 export default (input, range, dictionary = {}) => {

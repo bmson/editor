@@ -2,8 +2,8 @@
 import { convertToRaw } from 'draft-js'
 
 // Local dependencies
-import addInline from './compiler.assets/inline.jsx'
-import addBlock from './compiler.assets/block.jsx'
+import addInline from './assets/inline.jsx'
+import addBlock from './assets/block.jsx'
 
 //
 export default (state, dictionary = {}) => {

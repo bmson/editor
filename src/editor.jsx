@@ -3,9 +3,9 @@ import React    from 'react'
 import { Editor, EditorState } from 'draft-js'
 
 // Local dependencies
-import Toolbar  from'./components/toolbar.jsx'
-import Preview  from'./components/preview.jsx'
-import compiler from'./components/compiler.jsx'
+import Toolbar  from'./components/toolbar/toolbar.jsx'
+import Preview  from'./components/preview/preview.jsx'
+import compiler from'./components/compiler/compiler.jsx'
 
 // Dictionaries
 import html     from'./components/dictionaries/html.jsx'
@@ -33,11 +33,16 @@ export default class App extends React.Component {
                editorState = { this.state.editorState }
                children = { this.props.children } />
 
-      <Preview editorState = { compiler(this.state.editorState, this.state.dictionary) }>
-        <div onClick = { e => this.setState({ dictionary: html }) }>html</div>
-        <div onClick = { e => this.setState({ dictionary: plain }) }>plain</div>
-        <div onClick = { e => this.setState({ dictionary: markdown }) }>markdown</div>
-        <div onClick = { e => this.setState({ dictionary: jira }) }>jira</div>
+      <Preview>
+        <div className='selection'>
+          <div onClick = { e => this.setState({ dictionary: html }) }>html</div>
+          <div onClick = { e => this.setState({ dictionary: plain }) }>plain</div>
+          <div onClick = { e => this.setState({ dictionary: markdown }) }>markdown</div>
+          <div onClick = { e => this.setState({ dictionary: jira }) }>jira</div>
+        </div>
+        <pre className='output'>
+          { compiler(this.state.editorState, this.state.dictionary) }
+        </pre>
       </Preview>
 
     </div>

@@ -2,15 +2,15 @@
 import React from 'react'
 
 // Local dependencies
-import Bold          from'./toolbar.assets/inline/bold.jsx'
-import Italic        from'./toolbar.assets/inline/italic.jsx'
-import Underline     from'./toolbar.assets/inline/underline.jsx'
-import Strikethrough from'./toolbar.assets/inline/strikethrough.jsx'
-import Code          from'./toolbar.assets/inline/code.jsx'
-import Blockquote    from'./toolbar.assets/block/blockquote.jsx'
-import UnorderedList from'./toolbar.assets/block/unorderedList.jsx'
-import OrderedList   from'./toolbar.assets/block/orderedList.jsx'
-import CodeBlock     from'./toolbar.assets/block/codeBlock.jsx'
+import Bold          from'./inline/bold.jsx'
+import Italic        from'./inline/italic.jsx'
+import Underline     from'./inline/underline.jsx'
+import Strikethrough from'./inline/strikethrough.jsx'
+import Code          from'./inline/code.jsx'
+import Blockquote    from'./block/blockquote.jsx'
+import UnorderedList from'./block/unorderedList.jsx'
+import OrderedList   from'./block/orderedList.jsx'
+import CodeBlock     from'./block/codeBlock.jsx'
 
 //
 const bindProps = (children, props) => {
