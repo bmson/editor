@@ -16,11 +16,13 @@ export default (state, dictionary = {}) => {
   const compile = (block, index) => {
 
     //
-    const text = [block.text]
+    const text = [{ text: block.text }]
     const range = block.inlineStyleRanges
 
     //
     range.forEach(range => addInline(text, range, dictionary))
+
+    console.log(text)
 
     //
     return addBlock(text.join('.'), dictionary, {

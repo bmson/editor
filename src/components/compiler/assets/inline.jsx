@@ -1,33 +1,33 @@
 // Module definition
-export const inject = (input, child, index) => {
+const inject = (input, child, index) => {
 
   //
   const { previous, current, next } = child
 
   //
-  const array = [previous, current, next].filter(n => n)
+  const array = [previous, current, next].filter(n => n.text)
 
   //
-  return input.splice(index, 1, ...array)
+  input.splice(index, 1, ...array)
 
 }
 
 // Module definition
-export const splitter = (input, position, iterator) => {
+const splitter = (input, position, iterator) => {
 
   //
   const { index, adjust } = iterator
 
   //
-  const value = input[index]
+  const value = input[index].text
   const from  = position.from - adjust
   const to    = position.to - adjust
 
   //
   const child = {
-    previous:  value.slice(0, from),
-    current:   value.slice(from, to),
-    next:      value.slice(to, value.length),
+    previous:  { text: value.slice(0, from) },
+    current:   { text: value.slice(from, to) },
+    next:      { text: value.slice(to, value.length) },
   }
 
   //
@@ -46,7 +46,7 @@ export const walker = (input, position, iterator) => {
   const { index, adjust } = iterator
 
   //
-  const length = input[index].length
+  const length = input[index].text.length
 
   //
   if (from - adjust >= length) {
@@ -62,22 +62,19 @@ export const walker = (input, position, iterator) => {
     const child = splitter(input, position, iterator)
 
     //
-    if (child.previous && child.current && !child.next) {
+    if (child.previous.text && child.current.text && !child.next.text) {
 
       walker(input, {
-        from: from + (child.current).length,
+        from: from + (child.current).text.length,
         to: to
       }, {
         index: index + 1,
-        adjust: adjust + length - (child.current).length
+        adjust: adjust + length - (child.current).text.length
       })
 
     }
 
   }
-
-  //
-  return input
 
 }
 
@@ -85,8 +82,9 @@ export default (input, range, dictionary = {}) => {
 
   //
   const position = {
-    from: range.offset,
-    to:   range.offset + range.length
+    from:  range.offset,
+    to:    range.offset + range.length,
+    style: range.style
   }
 
   const iterator = {
