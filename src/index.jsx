@@ -7,7 +7,7 @@ import Image    from'./components/toolbar.assets/inline/image.jsx'
 // Render
 ReactDOM.render(
   <Editor placeholder='type something...'>
-    <Image className='codeBlock' />
+    <Image className='codeBlock' tooltip="Hot content" />
   </Editor>,
   document.getElementById('target')
 )

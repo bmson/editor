@@ -22,7 +22,6 @@ const bindProps = (children, props) => {
 
 // Module definition
 export default ({ children, ...props }) =>
-
   <div className='toolbar'>
 
     <div className='group'>
