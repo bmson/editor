@@ -3,8 +3,8 @@ import React    from 'react'
 import ReactDOM from 'react-dom'
 
 // Local dependencies
-import { Editor, Preview } from'./editor.jsx'
-import Image from'./components/toolbar/inline/image.jsx'
+import { Editor, Preview } from './editor.jsx'
+import Image from './components/toolbar/inline/image.jsx'
 
 // Module definition
 export default class App extends React.Component {
@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
     <div>
       <Editor ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
-        <Image className = 'codeBlock' tooltip = "Hot content" />
+        <Image className = 'codeBlock' tooltip = 'Hot content' />
       </Editor>
 
       <Preview data = { this.state.data } />
