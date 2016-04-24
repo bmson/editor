@@ -20,7 +20,7 @@ export default (state, dictionary = {}) => {
     const range = block.inlineStyleRanges
 
     //
-    let inline = [text.text];
+    let inline = [text[0].text];
     range.map(range => {
       const v = addInline(text, range, dictionary)
       inline = v

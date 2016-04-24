@@ -11,7 +11,7 @@ export default class Image extends React.Component {
     const { editorState, onChange } = this.props;
 
     //
-    const richUtils = RichUtils.toggleInlineStyle(editorState, 'IMAGE')
+    const richUtils = RichUtils.toggleInlineStyle(editorState, 'BOLD')
     onChange(richUtils)
 
     //

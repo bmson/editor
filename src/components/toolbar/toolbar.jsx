@@ -2,15 +2,15 @@
 import React from 'react'
 
 // Local dependencies
-import Bold          from'./inline/bold.jsx'
-import Italic        from'./inline/italic.jsx'
-import Underline     from'./inline/underline.jsx'
-import Strikethrough from'./inline/strikethrough.jsx'
-import Code          from'./inline/code.jsx'
-import Blockquote    from'./block/blockquote.jsx'
-import UnorderedList from'./block/unorderedList.jsx'
-import OrderedList   from'./block/orderedList.jsx'
-import CodeBlock     from'./block/codeBlock.jsx'
+import Bold          from './inline/bold.jsx'
+import Italic        from './inline/italic.jsx'
+import Underline     from './inline/underline.jsx'
+import Strikethrough from './inline/strikethrough.jsx'
+import Code          from './inline/code.jsx'
+import Blockquote    from './block/blockquote.jsx'
+import UnorderedList from './block/unorderedList.jsx'
+import OrderedList   from './block/orderedList.jsx'
+import CodeBlock     from './block/codeBlock.jsx'
 
 //
 const bindProps = (children, props) => {
@@ -42,5 +42,5 @@ export default ({ children, ...props }) =>
       <CodeBlock className='codeBlock' tooltip='Codeblock style' {...props} />
     </div>
 
-    {bindProps(children, props)}
+    { bindProps(children, props) }
   </div>

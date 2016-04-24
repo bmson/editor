@@ -20,25 +20,28 @@
   border-radius: 4px 4px 0 0;
 }
 
-.editor .preview {
+.preview {
   margin-top: 10px;
   font-size: 10px;
+
+  font-family: sans-serif;
+  font-size: 12px;
 
   border: 1px solid rgb(200, 200, 200);
   border-radius: 4px;
 }
 
-.editor .preview .selection {
+.preview .selection {
   border-bottom: 1px solid rgb(200, 200, 200);
 }
 
-.editor .preview .selection div {
+.preview .selection div {
   padding: 5px 10px;
   display: inline-block;
   border-right: 1px solid rgb(230, 230, 230);
 }
 
-.editor .preview .output {
+.preview .output {
   margin: 0;
   padding: 10px;
 }
