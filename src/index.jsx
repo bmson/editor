@@ -37,8 +37,7 @@ class Editor extends React.Component {
 
     <div className = 'editor' { ...this.props }>
 
-      <Draft ref = 'editor'
-             onChange    = { (editorState) => this.change(editorState) }
+      <Draft onChange    = { (editorState) => this.change(editorState) }
              editorState = { this.state.editorState }
              placeholder = { this.props.placeholder } />
 
