@@ -1,9 +1,9 @@
 // Global dependencies
-import React    from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
+import { Editor, Preview } from 'editor'
 
 // Local dependencies
-import { Editor, Preview } from './../src/index.jsx'
 import Image from './../src/components/toolbar/inline/image.jsx'
 
 // Module definition
