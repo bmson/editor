@@ -30,15 +30,19 @@ class Editor extends React.Component {
   export = (dictionary = html) => compiler(this.state.editorState, dictionary)
 
   //
+  change = (editorState) => this.setState({ editorState }, this.props.onChange)
+
+  //
   render = () =>
 
     <div className = 'editor' { ...this.props }>
 
-      <Draft onChange    = { (editorState) => this.setState({ editorState }, this.props.onChange) }
+      <Draft ref = 'editor'
+             onChange    = { (editorState) => this.change(editorState) }
              editorState = { this.state.editorState }
              placeholder = { this.props.placeholder } />
 
-      <Toolbar onChange    = { (editorState) => this.setState({ editorState }, this.props.onChange) }
+      <Toolbar onChange    = { (editorState) => this.change(editorState) }
                editorState = { this.state.editorState }
                children    = { this.props.children } />
 

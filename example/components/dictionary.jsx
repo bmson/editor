@@ -8,10 +8,10 @@ export default {
   "unordered-list-item": e => (e.firstChild ? '<ul>\n <li> ' : ' <li> ') + e.nodeValue + (e.lastChild ? '</li>\n</ul>\n\n' : '</li>\n'),
 
   // Inline
-  "BOLD":          e => e.nodeValue.toUpperCase(),
-  "ITALIC":        e => e.nodeValue.toUpperCase(),
-  "UNDERLINE":     e => e.nodeValue.toUpperCase(),
-  "STRIKETHROUGH": e => e.nodeValue.toUpperCase(),
-  "CODE":          e => e.nodeValue.toUpperCase(),
+  "BOLD":          e => '<strong>' + e.nodeValue + '</strong>',
+  "ITALIC":        e => '<em>' + e.nodeValue + '</em>',
+  "UNDERLINE":     e => '<u>' + e.nodeValue + '</u>',
+  "STRIKETHROUGH": e => '<strike>' + e.nodeValue + '</strike>',
+  "CODE":          e => '<code>' + e.nodeValue + '</code>',
 
 }

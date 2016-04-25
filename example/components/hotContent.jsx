@@ -8,7 +8,7 @@ export default class Bold extends React.Component {
   onClick(e) {
 
     //
-    console.log('Set fullscreen')
+    console.log('hot content')
 
     //
     e.preventDefault()

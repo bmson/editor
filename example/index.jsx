@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { Editor, Preview } from 'editor'
 
 // Local dependencies
-import Fullscreen from './components/fullscreen.jsx'
+import HotContent from './components/hotContent.jsx'
 import dictionary from './components/dictionary.jsx'
 
 // Module definition
@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
     <div>
       <Editor ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
-        <Fullscreen className = 'codeBlock' tooltip = 'Fullscreen' />
+        <HotContent className = 'codeBlock' tooltip = 'Hot Content' />
       </Editor>
 
       <Preview data = { this.state.data } />
