@@ -1,4 +1,4 @@
-const toggle = (array, value) => {
+const toggle = (array = [], value = '') => {
   var index = array.indexOf(value);
 
   var copy = [].concat(array);

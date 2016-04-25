@@ -1,41 +1,51 @@
-// Global dependencies
-import React    from 'react'
-import ReactDOM from 'react-dom'
+// React
+import React from 'react'
+
+// DraftJS
+import { Editor as Draft } from 'draft-js'
+import { EditorState }     from 'draft-js'
 
 // Local dependencies
-import { Editor, Preview } from './editor.jsx'
-import Image from './components/toolbar/inline/image.jsx'
+import Toolbar  from './components/toolbar/toolbar.jsx'
+import Preview  from './components/preview/preview.jsx'
+import compiler from './components/compiler/compiler.jsx'
+import html     from './components/dictionaries/html.jsx'
 
 // Module definition
-export default class App extends React.Component {
+class Editor extends React.Component {
 
+  //
   state = {
-    data: null
+    editorState: EditorState.createEmpty()
   }
 
-  update = () => {
-
-    //
-    const { editor } = this.refs
-
-    //
-    this.setState({
-      data: editor.export()
-    })
-
+  //
+  static defaultProps = {
+    toolbar:     true,
+    placeholder: false,
+    onChange:    Function
   }
 
+  //
+  export = (dictionary = html) => compiler(this.state.editorState, dictionary)
+
+  //
   render = () =>
 
-    <div>
-      <Editor ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
-        <Image className = 'codeBlock' tooltip = 'Hot content' />
-      </Editor>
+    <div className = 'editor' { ...this.props }>
 
-      <Preview data = { this.state.data } />
+      <Draft onChange    = { (editorState) => this.setState({ editorState }, this.props.onChange) }
+             editorState = { this.state.editorState }
+             placeholder = { this.props.placeholder } />
+
+      <Toolbar onChange    = { (editorState) => this.setState({ editorState }, this.props.onChange) }
+               editorState = { this.state.editorState }
+               children    = { this.props.children } />
+
     </div>
 
 }
 
-// Render
-ReactDOM.render(<App />, document.getElementById('target'))
+// Exporter
+export { Editor, Preview }
+export * from './components/toolbar/toolbar.jsx';

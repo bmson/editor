@@ -1,15 +1,12 @@
 // Dependencies
-var reqly = require('reqly-react');
-var pkg   = require('./package.json');
+const reqly = require('reqly-react');
+const pkg   = require('./package.json');
 
 //
-var config = pkg.config;
+const config = pkg.config;
 
 //
 reqly.server(config.port, {
-  privatePath: config.privatePath,
-  privateFile: config.privateFile,
-
-  publicPath:  config.publicPath,
-  publicFile:  config.publicFile
+  input: config.input,
+  output: config.output
 });
