@@ -1,12 +1,10 @@
 {
-  "name": "zendesk-editor",
+  "name": "editor",
   "version": "0.1.0",
   "description": "Rich text editor",
   "scripts": {
-    "symlink": "ln -sf ./../src/ node_modules && mv node_modules/src node_modules/editor",
-    "prestart": "npm install && npm run symlink",
-    "start": "node server.js",
-    "poststart": "npm run symlink" 
+    "prestart": "npm install",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

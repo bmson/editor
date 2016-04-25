@@ -8,7 +8,7 @@ export default class Code extends React.Component {
   onClick(e) {
 
     //
-    const { editorState, onChange } = this.props;
+    const { editorState, onChange } = this.props
 
     //
     const richUtils = RichUtils.toggleInlineStyle(editorState, 'CODE')

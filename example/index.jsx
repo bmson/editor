@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom'
 import { Editor, Preview } from 'editor'
 
 // Local dependencies
-import Image from './../src/components/toolbar/inline/image.jsx'
+import Fullscreen from './components/fullscreen.jsx'
+import dictionary from './components/dictionary.jsx'
 
 // Module definition
 export default class App extends React.Component {
@@ -20,7 +21,7 @@ export default class App extends React.Component {
 
     //
     this.setState({
-      data: editor.export()
+      data: editor.export(dictionary)
     })
 
   }
@@ -29,7 +30,7 @@ export default class App extends React.Component {
 
     <div>
       <Editor ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
-        <Image className = 'codeBlock' tooltip = 'Hot content' />
+        <Fullscreen className = 'codeBlock' tooltip = 'Fullscreen' />
       </Editor>
 
       <Preview data = { this.state.data } />

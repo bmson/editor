@@ -8,7 +8,7 @@ export default class UnorderedList extends React.Component {
   onClick(e) {
 
     //
-    const { editorState, onChange } = this.props;
+    const { editorState, onChange } = this.props
 
     //
     const richUtils = RichUtils.toggleBlockType(editorState, 'unordered-list-item')

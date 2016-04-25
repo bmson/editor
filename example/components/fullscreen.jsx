@@ -3,16 +3,12 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class CodeBlock extends React.Component {
+export default class Bold extends React.Component {
 
   onClick(e) {
 
     //
-    const { editorState, onChange } = this.props
-
-    //
-    const richUtils = RichUtils.toggleBlockType(editorState, 'code-block')
-    onChange(richUtils)
+    console.log('Set fullscreen')
 
     //
     e.preventDefault()
