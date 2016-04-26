@@ -3,25 +3,30 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class Italic extends React.Component {
+export default class Bold extends React.Component {
 
-  onClick(e) {
+  //
+  static defaultProps = {
+    onChange: Function
+  }
 
-    //
-    const { editorState, onChange } = this.props
-
-    //
-    const richUtils = RichUtils.toggleInlineStyle(editorState, 'ITALIC')
-    onChange(richUtils)
+  select(event) {
 
     //
-    e.preventDefault()
+    const { editor } = this.props
+
+    //
+    const editorState = RichUtils.toggleInlineStyle(editor.editor.state.editorState, 'ITALIC')
+    editor.editor.setState({ editorState }, this.props.onChange)
+
+    //
+    event.preventDefault()
 
   }
 
-  render= () =>
-    <button onMouseDown={e => this.onClick(e)}
-            data-tooltip={this.props.tooltip}
-            {...this.props} />
+  render = () =>
+    <button onMouseDown = { e => this.select(e) }
+            data-tooltip = { this.props.tooltip }
+            { ...this.props } />
 
 }

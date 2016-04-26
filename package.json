@@ -32,6 +32,7 @@
   "config": {
     "port": 3000,
     "input": ["./example/index.jsx", "./src/index.jsx"],
-    "output": "./example/bundle.js"
+    "output": "./example/bundle.js",
+    "symlink": "./src/"
   }
 }

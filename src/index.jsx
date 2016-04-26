@@ -10,22 +10,19 @@ import Preview  from './components/preview/preview.jsx'
 class Container extends React.Component {
 
   //
-  compile = (dictionary) => {
-
-    //
-    const { editor } = this.refs
-
-    //
-    return editor.compile(dictionary)
-
+  static defaultProps = {
+    onChange: Function
   }
 
   //
-  render = () =>
-    <div className = 'editor' { ...this.props }>
-      <Editor ref = 'editor' placeholder = { this.props.placeholder } onChange = { this.props.onChange } />
+  compile = (dictionary) => this.refs.editor.compile(dictionary)
 
-      <Toolbar editor = { this.refs }>
+  //
+  render = () =>
+    <div className='editor' { ...this.props }>
+      <Editor ref='editor' placeholder={ this.props.placeholder } onChange={ this.props.onChange } />
+
+      <Toolbar editor={ this.refs } onChange={ this.props.onChange }>
         { this.props.children }
       </Toolbar>
     </div>

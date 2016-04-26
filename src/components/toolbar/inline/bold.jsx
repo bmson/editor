@@ -5,14 +5,19 @@ import { RichUtils } from 'draft-js';
 // Module definition
 export default class Bold extends React.Component {
 
+  //
+  static defaultProps = {
+    onChange: Function
+  }
+
   select(event) {
 
     //
     const { editor } = this.props
 
     //
-    const richUtils = RichUtils.toggleInlineStyle(editor.editor.state.editorState, 'BOLD')
-    editor.editor.setState(richUtils)
+    const editorState = RichUtils.toggleInlineStyle(editor.editor.state.editorState, 'BOLD')
+    editor.editor.setState({ editorState }, this.props.onChange)
 
     //
     event.preventDefault()

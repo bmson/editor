@@ -1,17 +1,15 @@
 // Dependencies
 const fs    = require('fs');
+const path  = require("path");
 const reqly = require('reqly-react');
 const pkg   = require('./package.json');
 
-//
-const config = pkg.config;
-const name   = pkg.name;
+// Get variables from package.json
+const { config: { port, input, output, symlink }, name } = pkg;
 
 // Create symlink
-fs.symlink('./../src', './node_modules/' + pkg.name, e => {});
+const main = path.relative('./node_modules/', symlink);
+fs.symlink(main, './node_modules/' + pkg.name, e => {});
 
-//
-reqly.server(config.port, {
-  input:  config.input,
-  output: config.output
-});
+// Create server
+reqly.server(port, { input, output });
