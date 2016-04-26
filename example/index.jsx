@@ -1,11 +1,10 @@
 // Global dependencies
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Editor, Preview } from 'editor'
+import { Container, Preview } from 'editor'
 
 // Local dependencies
 import HotContent from './components/hotContent.jsx'
-import dictionary from './components/dictionary.jsx'
 
 // Module definition
 export default class App extends React.Component {
@@ -21,7 +20,7 @@ export default class App extends React.Component {
 
     //
     this.setState({
-      data: editor.export(dictionary)
+      data: editor.compile()
     })
 
   }
@@ -29,9 +28,9 @@ export default class App extends React.Component {
   render = () =>
 
     <div>
-      <Editor ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
+      <Container ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
         <HotContent className = 'codeBlock' tooltip = 'Hot Content' />
-      </Editor>
+      </Container>
 
       <Preview data = { this.state.data } />
     </div>
