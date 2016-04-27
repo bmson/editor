@@ -7,22 +7,14 @@ export default class Preview extends React.Component {
   //
   static defaultProps = {
     children: '',
-    data:     ''
+    value:    ''
   }
 
   //
   render = () =>
-
     <div className='preview'>
-
-      <div className='selection'>
-        { this.props.children }
-      </div>
-
-      <pre className='output'>
-        { this.props.data }
-      </pre>
-
+      <div className='selection'>{ this.props.children }</div>
+      <pre className='output'>{ this.props.value }</pre>
     </div>
 
 }

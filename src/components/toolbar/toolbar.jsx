@@ -12,35 +12,50 @@ import UnorderedList from './block/unorderedList.jsx'
 import OrderedList   from './block/orderedList.jsx'
 import CodeBlock     from './block/codeBlock.jsx'
 
-//
-const bindProps = (children, props) => {
+// Module definition
+export default class Preview extends React.Component {
 
-  const fn = (child) => React.cloneElement(child, props)
-  return React.Children.map(children, fn)
+  //
+  static defaultProps = {
+    children: '',
+    data:     ''
+  }
+
+  //
+  bindProps = (props) => {
+    const fn = (child) => React.cloneElement(child, { ...this.props.editor })
+    return React.Children.map(props.children, fn)
+  }
+
+  //
+  render = () =>
+    <div className='toolbar'>
+      <div className='group'>
+
+        <Bold className = 'bold'
+              tooltip   = 'Bold style'
+              { ...this.props.editor } />
+
+        <Italic className = 'italic'
+                tooltip   = 'Italic style'
+                { ...this.props.editor } />
+
+        <Underline className='underline' tooltip='Underline style'  { ...this.props.editor } />
+        <Strikethrough className='strikethrough' tooltip='Strikethrough style' { ...this.props.editor } />
+      </div>
+
+      <div className='group'>
+        <UnorderedList className='unorderedList' tooltip='Unordered list style' { ...this.props.editor } />
+        <OrderedList className='orderedList' tooltip='Ordered list style' { ...this.props.editor } />
+      </div>
+
+      <div className='group'>
+        <Code className='code' tooltip='Code style' { ...this.props.editor } />
+        <Blockquote className='blockquote' tooltip='Blockquote style' { ...this.props.editor } />
+        <CodeBlock className='codeBlock' tooltip='Codeblock style' { ...this.props.editor } />
+      </div>
+
+      { this.bindProps(this.props) }
+    </div>
 
 }
-
-// Module definition
-export default ({ children, ...props }) =>
-  <div className='toolbar'>
-
-    <div className='group'>
-      <Bold className='bold' tooltip='Bold style' {...props} />
-      <Italic className='italic' tooltip='Italic style' {...props} />
-      <Underline className='underline' tooltip='Underline style'  {...props} />
-      <Strikethrough className='strikethrough' tooltip='Strikethrough style' {...props} />
-    </div>
-
-    <div className='group'>
-      <UnorderedList className='unorderedList' tooltip='Unordered list style' {...props} />
-      <OrderedList className='orderedList' tooltip='Ordered list style' {...props} />
-    </div>
-
-    <div className='group'>
-      <Code className='code' tooltip='Code style' {...props} />
-      <Blockquote className='blockquote' tooltip='Blockquote style' {...props} />
-      <CodeBlock className='codeBlock' tooltip='Codeblock style' {...props} />
-    </div>
-
-    { bindProps(children, props) }
-  </div>

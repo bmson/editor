@@ -10,7 +10,7 @@ import HotContent from './components/hotContent.jsx'
 export default class App extends React.Component {
 
   state = {
-    data: null
+    value: null
   }
 
   update = () => {
@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
     //
     this.setState({
-      data: editor.compile()
+      value: editor.compile()
     })
 
   }
@@ -32,7 +32,7 @@ export default class App extends React.Component {
         <HotContent className = 'codeBlock' tooltip = 'Hot Content' />
       </Container>
 
-      <Preview data = { this.state.data } />
+      <Preview value = { this.state.value } />
     </div>
 
 }

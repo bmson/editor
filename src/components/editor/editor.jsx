@@ -32,5 +32,4 @@ export default class Editor extends React.Component {
            editorState = { this.state.editorState }
            placeholder = { this.props.placeholder } />
 
-
 }

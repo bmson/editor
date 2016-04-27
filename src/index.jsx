@@ -15,14 +15,17 @@ class Container extends React.Component {
   }
 
   //
-  compile = (dictionary) => this.refs.editor.compile(dictionary)
+  compile = (dictionary) => {
+    const { editor } = this.refs
+    return editor.compile(dictionary)
+  }
 
   //
   render = () =>
     <div className='editor' { ...this.props }>
       <Editor ref='editor' placeholder={ this.props.placeholder } onChange={ this.props.onChange } />
 
-      <Toolbar editor={ this.refs } onChange={ this.props.onChange }>
+      <Toolbar editor={ this.refs }>
         { this.props.children }
       </Toolbar>
     </div>

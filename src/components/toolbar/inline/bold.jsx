@@ -16,8 +16,8 @@ export default class Bold extends React.Component {
     const { editor } = this.props
 
     //
-    const editorState = RichUtils.toggleInlineStyle(editor.editor.state.editorState, 'BOLD')
-    editor.editor.setState({ editorState }, this.props.onChange)
+    const editorState = RichUtils.toggleInlineStyle(editor.state.editorState, 'BOLD')
+    editor.setState({ editorState }, editor.props.onChange)
 
     //
     event.preventDefault()
