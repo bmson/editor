@@ -5,23 +5,25 @@ import { RichUtils } from 'draft-js';
 // Module definition
 export default class UnorderedList extends React.Component {
 
-  onClick(e) {
+  //
+  select(event) {
 
     //
-    const { editorState, onChange } = this.props
+    const { editor, editor:{state} } = this.props
 
     //
-    const richUtils = RichUtils.toggleBlockType(editorState, 'unordered-list-item')
-    onChange(richUtils)
+    const richUtils = RichUtils.toggleBlockType(state.editor, 'unordered-list-item')
+    editor.setState({ editor: richUtils })
 
     //
-    e.preventDefault()
+    event.preventDefault()
 
   }
 
+  //
   render = () =>
-    <button onMouseDown={e => this.onClick(e)}
-            data-tooltip={this.props.tooltip}
-            {...this.props} />
+    <button onMouseDown = { e => this.select(e) }
+            data-tooltip = { this.props.tooltip }
+            { ...this.props } />
 
 }

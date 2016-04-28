@@ -12,24 +12,23 @@ export default class Editor extends React.Component {
 
   //
   static defaultProps = {
-    placeholder: false,
-    onChange:    Function
+    onChange: e => e,
+    placeholder: 'Click and type…'
   }
 
   //
   state = {
-    editorState: EditorState.createEmpty()
+    editor: EditorState.createEmpty()
   }
 
   //
-  compile = (dictionary = html) => {
-    return compiler(this.state.editorState, dictionary)
-  }
+  compile = (dictionary = html) =>
+    compiler(this.state.editor, dictionary)
 
   //
   render = () =>
-    <Draft onChange    = { editorState => this.setState({ editorState }, this.props.onChange) }
-           editorState = { this.state.editorState }
+    <Draft onChange    = { editor => this.setState({ editor }, this.props.onChange) }
+           editorState = { this.state.editor }
            placeholder = { this.props.placeholder } />
 
 }

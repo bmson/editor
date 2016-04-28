@@ -6,24 +6,21 @@ import { RichUtils } from 'draft-js';
 export default class Bold extends React.Component {
 
   //
-  static defaultProps = {
-    onChange: Function
-  }
-
   select(event) {
 
     //
-    const { editor } = this.props
+    const { editor, editor:{state} } = this.props
 
     //
-    const editorState = RichUtils.toggleInlineStyle(editor.state.editorState, 'BOLD')
-    editor.setState({ editorState }, editor.props.onChange)
+    const richUtils = RichUtils.toggleInlineStyle(state.editor, 'BOLD')
+    editor.setState({ editor: richUtils })
 
     //
     event.preventDefault()
 
   }
 
+  //
   render = () =>
     <button onMouseDown = { e => this.select(e) }
             data-tooltip = { this.props.tooltip }

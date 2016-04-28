@@ -5,23 +5,25 @@ import { RichUtils } from 'draft-js';
 // Module definition
 export default class Underline extends React.Component {
 
-  onClick(e) {
+  //
+  select(event) {
 
     //
-    const { editorState, onChange } = this.props
+    const { editor, editor:{state} } = this.props
 
     //
-    const richUtils = RichUtils.toggleInlineStyle(editorState, 'UNDERLINE')
-    onChange(richUtils)
+    const richUtils = RichUtils.toggleInlineStyle(state.editor, 'UNDERLINE')
+    editor.setState({ editor: richUtils })
 
     //
-    e.preventDefault()
+    event.preventDefault()
 
   }
 
+  //
   render = () =>
-    <button onMouseDown={e => this.onClick(e)}
-            data-tooltip={this.props.tooltip}
-            {...this.props} />
+    <button onMouseDown = { e => this.select(e) }
+            data-tooltip = { this.props.tooltip }
+            { ...this.props } />
 
 }

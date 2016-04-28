@@ -11,21 +11,24 @@ class Container extends React.Component {
 
   //
   static defaultProps = {
-    onChange: Function
+    onChange: e => e,
+    placeholder: 'Click and type…'
   }
 
   //
-  compile = (dictionary) => {
-    const { editor } = this.refs
-    return editor.compile(dictionary)
-  }
+  compile = (dictionary) =>
+    this.refs.editor.compile(dictionary)
+
+  //
+  componentDidMount = () =>
+    this.forceUpdate()
 
   //
   render = () =>
-    <div className='editor' { ...this.props }>
-      <Editor ref='editor' placeholder={ this.props.placeholder } onChange={ this.props.onChange } />
+    <div className = 'editor'>
+      <Editor ref = 'editor' placeholder = { this.props.placeholder } onChange = { this.props.onChange } />
 
-      <Toolbar editor={ this.refs }>
+      <Toolbar editor = { this.refs }>
         { this.props.children }
       </Toolbar>
     </div>

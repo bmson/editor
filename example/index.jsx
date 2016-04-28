@@ -9,10 +9,12 @@ import HotContent from './components/hotContent.jsx'
 // Module definition
 export default class App extends React.Component {
 
+  //
   state = {
     value: null
   }
 
+  //
   update = () => {
 
     //
@@ -26,9 +28,8 @@ export default class App extends React.Component {
   }
 
   render = () =>
-
     <div>
-      <Container ref = 'editor' placeholder = 'type something...' onChange = { this.update }>
+      <Container ref = 'editor'  onChange = { this.update }>
         <HotContent className = 'codeBlock' tooltip = 'Hot Content' />
       </Container>
 

@@ -3,21 +3,26 @@ import React from 'react'
 import { RichUtils } from 'draft-js';
 
 // Module definition
-export default class Bold extends React.Component {
+export default class OrderedList extends React.Component {
 
-  onClick(e) {
-
-    //
-    console.log('hot content')
+  //
+  select(event) {
 
     //
-    e.preventDefault()
+    const { editor, editor:{state} } = this.props
+
+    //
+    console.log(editor, state)
+
+    //
+    event.preventDefault()
 
   }
 
+  //
   render = () =>
-    <button onMouseDown={e => this.onClick(e)}
-            data-tooltip={this.props.tooltip}
-            {...this.props} />
+    <button onMouseDown = { e => this.select(e) }
+            data-tooltip = { this.props.tooltip }
+            { ...this.props } />
 
 }
