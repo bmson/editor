@@ -13,15 +13,10 @@ import OrderedList   from './block/orderedList.jsx'
 import CodeBlock     from './block/codeBlock.jsx'
 
 // Module definition
-export default class Preview extends React.Component {
+export default class extends React.Component {
 
   //
-  static defaultProps = {
-    editor: {}
-  }
-
-  //
-  bindProps = (props) => {
+  cloneChildren = (props) => {
     const fn = (child) => React.cloneElement(child, { ...this.props.editor })
     return React.Children.map(props.children, fn)
   }
@@ -30,7 +25,7 @@ export default class Preview extends React.Component {
   render = () =>
     <div className = 'toolbar'>
       <div className = 'group'>
-        <Bold          className = 'bold'          tooltip = 'Bold style'          { ...this.props.editor } />
+        <Bold          className = 'bold'          tooltip = 'Bold style'          { ...this.props } />
         <Italic        className = 'italic'        tooltip = 'Italic style'        { ...this.props.editor } />
         <Underline     className = 'underline'     tooltip = 'Underline style'     { ...this.props.editor } />
         <Strikethrough className = 'strikethrough' tooltip = 'Strikethrough style' { ...this.props.editor } />
@@ -47,7 +42,7 @@ export default class Preview extends React.Component {
         <CodeBlock  className = 'codeBlock'  tooltip = 'Codeblock style'  { ...this.props.editor } />
       </div>
 
-      { this.bindProps(this.props) }
+      { this.cloneChildren(this.props) }
     </div>
 
 }

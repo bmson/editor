@@ -9,11 +9,8 @@ export default class Bold extends React.Component {
   select(event) {
 
     //
-    const { editor, editor:{state} } = this.props
-
-    //
-    const richUtils = RichUtils.toggleInlineStyle(state.editor, 'BOLD')
-    editor.setState({ editor: richUtils })
+    const update = RichUtils.toggleInlineStyle(this.props.state, 'BOLD')
+    this.props.onChange(update)
 
     //
     event.preventDefault()
@@ -23,7 +20,7 @@ export default class Bold extends React.Component {
   //
   render = () =>
     <button onMouseDown = { e => this.select(e) }
-            data-tooltip = { this.props.tooltip }
-            { ...this.props } />
+            className    = { this.props.className }
+            data-tooltip = { this.props.tooltip } />
 
 }

@@ -2,13 +2,7 @@
 import React from 'react'
 
 // Module definition
-export default class Preview extends React.Component {
-
-  //
-  static defaultProps = {
-    children: '',
-    value:    ''
-  }
+export default class extends React.Component {
 
   //
   render = () =>

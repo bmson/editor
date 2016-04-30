@@ -1,7 +1,7 @@
 // Global dependencies
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Editor, Toolbar, Preview } from 'editor'
+import { Editor, Toolbar, Preview, Compiler } from 'editor'
 
 // Local dependencies
 import Definition from './components/definition.jsx'
@@ -16,14 +16,15 @@ export default class App extends React.Component {
   }
 
   //
-  update = (editor) => this.setState({ result: editor.compile() })
-  format = (editor) => this.setState({ editor })
+  update = (editor) =>
+    this.setState({ editor, result: Compiler.modifier(editor) })
 
+  //
   render = () =>
     <div>
-      <Editor state = {this.state.editor} placeholder = 'Comment...' onChange = {this.update} />
+      <Editor state = {this.state.editor} placeholder = 'Click and type…' onChange = {this.update} />
 
-      <Toolbar state = {this.state.editor} onChange = {this.format}>
+      <Toolbar state = {this.state.editor} onChange = {this.update}>
         <Definition className = 'codeBlock' tooltip = 'Hot Content' />
       </Toolbar>
 
