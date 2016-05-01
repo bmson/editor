@@ -5,25 +5,25 @@ import { RichUtils } from 'draft-js';
 // Module definition
 export default class Blockquote extends React.Component {
 
-  //
+  // Event handler
   select(event) {
 
-    //
-    const { editor, editor:{state} } = this.props
+    // Collect props
+    const { state, onChange } = this.props
 
-    //
-    const richUtils = RichUtils.toggleBlockType(state.editor, 'blockquote')
-    editor.setState({ editor: richUtils })
+    // Toogle block element and send to onChange callback
+    const update = RichUtils.toggleBlockType(state, 'blockquote')
+    onChange(update)
 
-    //
+    // Prevent default event
     event.preventDefault()
 
   }
 
-  //
+  // Render component
   render = () =>
-    <button onMouseDown = { e => this.select(e) }
-            data-tooltip = { this.props.tooltip }
-            { ...this.props } />
+    <button onMouseDown  = { e => this.select(e) }
+            className    = { this.props.className }
+            data-tooltip = { this.props.tooltip } />
 
 }

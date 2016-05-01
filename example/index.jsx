@@ -22,7 +22,7 @@ export default class App extends React.Component {
   //
   render = () =>
     <div>
-      <Editor state = {this.state.editor} placeholder = 'Click and type…' onChange = {this.update} />
+      <Editor state = {this.state.editor} onChange = {this.update} placeholder = 'Click and type…' />
 
       <Toolbar state = {this.state.editor} onChange = {this.update}>
         <Definition className = 'codeBlock' tooltip = 'Hot Content' />

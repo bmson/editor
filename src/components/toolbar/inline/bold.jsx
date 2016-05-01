@@ -5,21 +5,24 @@ import { RichUtils } from 'draft-js';
 // Module definition
 export default class Bold extends React.Component {
 
-  //
+  // Event handler
   select(event) {
 
-    //
-    const update = RichUtils.toggleInlineStyle(this.props.state, 'BOLD')
-    this.props.onChange(update)
+    // Collect props
+    const { state, onChange } = this.props
 
-    //
+    // Toogle inline element and send to onChange callback
+    const update = RichUtils.toggleInlineStyle(state, 'BOLD')
+    onChange(update)
+
+    // Prevent default event
     event.preventDefault()
 
   }
 
-  //
+  // Render component
   render = () =>
-    <button onMouseDown = { e => this.select(e) }
+    <button onMouseDown  = { e => this.select(e) }
             className    = { this.props.className }
             data-tooltip = { this.props.tooltip } />
 

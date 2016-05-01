@@ -5,25 +5,25 @@ import { RichUtils } from 'draft-js';
 // Module definition
 export default class Code extends React.Component {
 
-  //
+  // Event handler
   select(event) {
 
-    //
-    const { editor, editor:{state} } = this.props
+    // Collect props
+    const { state, onChange } = this.props
 
-    //
-    const richUtils = RichUtils.toggleInlineStyle(state.editor, 'CODE')
-    editor.setState({ editor: richUtils })
+    // Toogle inline element and send to onChange callback
+    const update = RichUtils.toggleInlineStyle(state, 'CODE')
+    onChange(update)
 
-    //
+    // Prevent default event
     event.preventDefault()
 
   }
 
-  //
+  // Render component
   render = () =>
-    <button onMouseDown = { e => this.select(e) }
-            data-tooltip = { this.props.tooltip }
-            { ...this.props } />
+    <button onMouseDown  = { e => this.select(e) }
+            className    = { this.props.className }
+            data-tooltip = { this.props.tooltip } />
 
 }

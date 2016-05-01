@@ -17,7 +17,7 @@ export default class extends React.Component {
 
   //
   cloneChildren = (props) => {
-    const fn = (child) => React.cloneElement(child, { ...this.props.editor })
+    const fn = (child) => React.cloneElement(child, { ...this.props })
     return React.Children.map(props.children, fn)
   }
 
@@ -26,20 +26,20 @@ export default class extends React.Component {
     <div className = 'toolbar'>
       <div className = 'group'>
         <Bold          className = 'bold'          tooltip = 'Bold style'          { ...this.props } />
-        <Italic        className = 'italic'        tooltip = 'Italic style'        { ...this.props.editor } />
-        <Underline     className = 'underline'     tooltip = 'Underline style'     { ...this.props.editor } />
-        <Strikethrough className = 'strikethrough' tooltip = 'Strikethrough style' { ...this.props.editor } />
+        <Italic        className = 'italic'        tooltip = 'Italic style'        { ...this.props } />
+        <Underline     className = 'underline'     tooltip = 'Underline style'     { ...this.props } />
+        <Strikethrough className = 'strikethrough' tooltip = 'Strikethrough style' { ...this.props } />
       </div>
 
       <div className = 'group'>
-        <UnorderedList className = 'unorderedList' tooltip = 'Unordered list style' { ...this.props.editor } />
-        <OrderedList   className = 'orderedList'   tooltip = 'Ordered list style'   { ...this.props.editor } />
+        <UnorderedList className = 'unorderedList' tooltip = 'Unordered list style' { ...this.props } />
+        <OrderedList   className = 'orderedList'   tooltip = 'Ordered list style'   { ...this.props } />
       </div>
 
       <div className = 'group'>
-        <Code       className = 'code'       tooltip = 'Code style'       { ...this.props.editor } />
-        <Blockquote className = 'blockquote' tooltip = 'Blockquote style' { ...this.props.editor } />
-        <CodeBlock  className = 'codeBlock'  tooltip = 'Codeblock style'  { ...this.props.editor } />
+        <Code       className = 'code'       tooltip = 'Code style'       { ...this.props } />
+        <Blockquote className = 'blockquote' tooltip = 'Blockquote style' { ...this.props } />
+        <CodeBlock  className = 'codeBlock'  tooltip = 'Codeblock style'  { ...this.props } />
       </div>
 
       { this.cloneChildren(this.props) }
