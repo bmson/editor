@@ -11,26 +11,18 @@ export default class {
 
   static modifier = (state, dictionary = html) => {
 
-    //
+    // Get array of blocks
     const content = state.getCurrentContent()
     const blocks  = convertToRaw(content).blocks
 
-    //
+    // Convert blocks to strings
     const compile = (block, index) => {
 
-      //
-      const text = [{ text: block.text, type:[''] }]
-      const range = block.inlineStyleRanges
+      // Add inline styles
+      const inline = addInline(block, dictionary)
 
-      //
-      let inline = [text[0].text];
-      range.map(range => {
-        const v = addInline(text, range, dictionary)
-        inline = v
-      })
-
-      //
-      return addBlock(inline.join(''), dictionary, {
+      // Add block styles
+      return addBlock(inline, dictionary, {
         previous: blocks[index - 1] || {},
         current:  blocks[index + 0] || {},
         next:     blocks[index + 1] || {},
@@ -38,7 +30,7 @@ export default class {
 
     }
 
-    //
+    // Map through blocks and return compiled string
     return blocks.map(compile).join('')
 
   }

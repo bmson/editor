@@ -15,13 +15,13 @@ import CodeBlock     from './block/codeBlock.jsx'
 // Module definition
 export default class extends React.Component {
 
-  //
-  cloneChildren = (props) => {
-    const fn = (child) => React.cloneElement(child, { ...this.props })
-    return React.Children.map(props.children, fn)
+  // Add props to children
+  cloneChildren = (children, options) => {
+    const fn = (child) => React.cloneElement(child, options)
+    return React.Children.map(children, fn)
   }
 
-  //
+  // Render component
   render = () =>
     <div className = 'toolbar'>
       <div className = 'group'>
@@ -42,7 +42,7 @@ export default class extends React.Component {
         <CodeBlock  className = 'codeBlock'  tooltip = 'Codeblock style'  { ...this.props } />
       </div>
 
-      { this.cloneChildren(this.props) }
+      { this.cloneChildren(this.props.children, { ...this.props }) }
     </div>
 
 }

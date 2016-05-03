@@ -1,3 +1,4 @@
+//
 const toggle = (array = [], value = '') => {
   var index = array.indexOf(value);
 
@@ -98,25 +99,34 @@ export const walker = (input, position, iterator) => {
 }
 
 //
-export default (input, range, dictionary = {}) => {
+export default (block, dictionary = {}) => {
+
+  const text = [{ text: block.text, type:[''] }]
+  const ranges = block.inlineStyleRanges
+
+  ranges.map(range => {
+
+    //
+    const position = {
+      from: range.offset,
+      to:   range.offset + range.length,
+      style: range.style
+    }
+
+    //
+    const iterator = {
+      index:  0,
+      adjust: 0
+    }
+
+    //
+    walker(text, position, iterator)
+
+  })
+
 
   //
-  const position = {
-    from: range.offset,
-    to:   range.offset + range.length,
-    style: range.style
-  }
-
-  const iterator = {
-    index:  0,
-    adjust: 0
-  }
-
-  //
-  walker(input, position, iterator)
-
-  //
-  const a = input.map(i => {
+  return text.map(i => {
 
     //
     let val = i.text
@@ -129,8 +139,6 @@ export default (input, range, dictionary = {}) => {
     //
     return val;
 
-  })
-
-  return a
+  }).join('') || block.text
 
 }
