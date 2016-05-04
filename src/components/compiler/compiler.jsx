@@ -2,14 +2,16 @@
 import { convertToRaw } from 'draft-js'
 
 // Local dependencies
-import addInline from './type/inline.jsx'
-import addBlock  from './type/block.jsx'
-import html      from './dictionary/html.jsx'
+import Worker from './worker/index.jsx'
+import html   from './dictionary/html.jsx'
 
 // Module definition
 export default class {
 
   static modifier = (state, dictionary = html) => {
+
+    // Create worker
+    const worker = new Worker
 
     // Get array of blocks
     const content = state.getCurrentContent()
@@ -19,10 +21,10 @@ export default class {
     const compile = (block, index) => {
 
       // Add inline styles
-      const inline = addInline(block, dictionary)
+      const inline = worker.inline(block, dictionary)
 
       // Add block styles
-      return addBlock(inline, dictionary, {
+      return worker.block(inline, dictionary, {
         previous: blocks[index - 1] || {},
         current:  blocks[index + 0] || {},
         next:     blocks[index + 1] || {},

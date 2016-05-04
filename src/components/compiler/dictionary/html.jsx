@@ -17,18 +17,18 @@ export default {
   + (e.lastChild ? '</pre>' : '<br/>'),
 
   "ordered-list-item": e =>
-    (e.firstChild ? '<ol><li>' : ' <li>')
+    (e.firstChild ? '<ol><li>' : '<li>')
   + (e.nodeValue)
   + (e.lastChild ? '</li></ol>' : '</li>'),
 
   "unordered-list-item": e =>
-    (e.firstChild ? '<ul><li>' : ' <li>')
+    (e.firstChild ? '<ul><li>' : '<li>')
   + (e.nodeValue)
   + (e.lastChild ? '</li></ul>' : '</li>'),
 
   // Inline
-  "BOLD":          e => '<strong>' + e.nodeValue + '</strong>',
-  "ITALIC":        e => '<em>' + e.nodeValue + '</em>',
+  "BOLD":          e => '<b>' + e.nodeValue + '</b>',
+  "ITALIC":        e => '<i>' + e.nodeValue + '</i>',
   "UNDERLINE":     e => '<u>' + e.nodeValue + '</u>',
   "STRIKETHROUGH": e => '<strike>' + e.nodeValue + '</strike>',
   "CODE":          e => '<code>' + e.nodeValue + '</code>',
