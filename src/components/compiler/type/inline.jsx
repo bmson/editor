@@ -1,61 +1,60 @@
 // Toggle value in array
-const toggleArray = (array = [], value = '') => {
+const toggleArray = (input = [], value = '') => {
 
-  // Get index of current value and clone array
+  // Clone array and get index of current value
+  const array = [...input];
   const index = array.indexOf(value);
-  const copy  = [...array];
 
   // Add value if it isnot found in array, otherwise remove it
-  (index < 0) ? copy.splice(0, 0, value) : copy.splice(index, 1)
+  (index < 0) ? array.splice(0, 0, value) : array.splice(index, 1)
 
   // Return transformed array
-  return copy
+  return array
 
 }
 
-//
-const inject = (input, child, index) => {
+// Insert children into array at specific index
+const spliceArray = (input, child, index) => {
 
-  // Collect child attributes and clone array
+  // Clone array and collect child attributes
+  const array = [...input]
   const { previous, current, next } = child
-  const copy = [...input]
 
-  // Filter out values that don't have text attribute
-  // so we're not inserting empty style tags
-  const array = [previous, current, next].filter(n => n.text)
+  // Filter out values that don't have text attribute, so we're not inserting empty style tags
+  const split = [previous, current, next].filter(n => n.text)
 
-  // TODO: Remove input from here
-  input.splice(index, 1, ...array)
+  // Add split into array at index
+  array.splice(index, 1, ...split)
 
-  //
-  return { child, copy }
+  // Retur child object and array
+  return { child, array }
 
 }
 
-//
-const splitter = (input, position, iterator) => {
+// Split current index into multiple
+const splitter = (input, position, { index, adjust }) => {
 
-  //
-  const { index, adjust } = iterator
+  // clone array and get object on index
+  const array  = [...input]
+  const object = array[index] || {}
 
-  //
-  const value = input[index] && input[index].text || ''
+  // Get text and position
+  const value = object.text || ''
   const from  = position.from - adjust
   const to    = position.to - adjust
 
-  //
-  const curType = input[index] && input[index].type
-  const curStyle = input[index] && input[index].style
+  // Toggle current style
+  const toggledType = toggleArray(object.type, position.style)
 
-  //
+  // Split array based on position
   const child = {
-    previous:  { text: value.slice(0, from), type: curType, style:curStyle }, // remove position from curStyle ????
-    current:   { text: value.slice(from, to), type: toggleArray(curType, position.style), style: position.style },
-    next:      { text: value.slice(to, value.length), type: curType, style:curStyle }, // remove position from curStyle
+    previous:  { text: value.slice(0, from),          type: object.type, style: object.style },
+    current:   { text: value.slice(from, to),         type: toggledType, style: position.style },
+    next:      { text: value.slice(to, value.length), type: object.type, style: object.style },
   }
 
   //
-  return inject(input, child, index)
+  return spliceArray(array, child, index)
 
 }
 
@@ -79,12 +78,12 @@ const walker = (input, position, { index, adjust } = { index: 0, adjust: 0 }) =>
   } else {
 
     // Matched
-    const { child, copy } = splitter(input, position, { index, adjust })
+    const { child, array } = splitter(input, position, { index, adjust })
 
     //
     if (child.previous.text && child.current.text && !child.next.text) {
 
-      return walker(input, {
+      return walker(array, {
         from:  from + (child.current).text.length,
         to:    to,
         style: child.current.style
@@ -95,7 +94,7 @@ const walker = (input, position, { index, adjust } = { index: 0, adjust: 0 }) =>
 
     } else {
 
-      return input
+      return array
 
     }
 
@@ -121,7 +120,7 @@ const setDictionary = ({ text, type }, dictionary) => {
 export default (block, dictionary = {}) => {
 
   //
-  const text = [{
+  let text = [{
     text: block.text,
     type: ['']
   }]
@@ -140,7 +139,7 @@ export default (block, dictionary = {}) => {
     }
 
     //
-    walker(text, position)
+    text = walker(text, position)
 
   })
 
