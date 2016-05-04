@@ -1,5 +1,6 @@
 // Local dependencies
-import { toggle, divide } from './utilities.jsx'
+import toggle  from './toggle.jsx'
+import divider from './divider.jsx'
 
 // Split current index into multiple
 export default (input, { from, to, style }, { index, adjust } = { index: 0, adjust: 0 }) => {
@@ -38,7 +39,7 @@ export default (input, { from, to, style }, { index, adjust } = { index: 0, adju
   // Return nodes and array
   return {
     previous, current, next,
-    array: divide(array, index, { previous, current, next })
+    array: divider(array, index, { previous, current, next })
   }
 
 }

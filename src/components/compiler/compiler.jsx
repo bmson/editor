@@ -2,7 +2,8 @@
 import { convertToRaw } from 'draft-js'
 
 // Local dependencies
-import worker from './worker/index.jsx'
+import block  from './worker/block.jsx'
+import inline from './worker/inline.jsx'
 import html   from './dictionary/html.jsx'
 
 // Module definition
@@ -15,13 +16,13 @@ export default class {
     const blocks  = convertToRaw(content).blocks
 
     // Convert blocks to strings
-    const compile = (block, index) => {
+    const compile = (element, index) => {
 
       // Add inline styles
-      const inline = worker.inline(block, dictionary)
+      const compiled = inline(element, dictionary)
 
       // Add block styles
-      return worker.block(inline, dictionary, {
+      return block(compiled, dictionary, {
         previous: blocks[index - 1] || {},
         current:  blocks[index + 0] || {},
         next:     blocks[index + 1] || {},
