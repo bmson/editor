@@ -2,16 +2,13 @@
 import { convertToRaw } from 'draft-js'
 
 // Local dependencies
-import Worker from './worker/index.jsx'
+import worker from './worker/index.jsx'
 import html   from './dictionary/html.jsx'
 
 // Module definition
 export default class {
 
   static modifier = (state, dictionary = html) => {
-
-    // Create worker
-    const worker = new Worker
 
     // Get array of blocks
     const content = state.getCurrentContent()
