@@ -26,6 +26,11 @@ export default {
   + (e.nodeValue)
   + (e.lastChild ? '</li>\n</ul>\n\n' : '</li>\n'),
 
+  "sticky": e =>
+    (e.firstChild ? '<div class="sticky">\n  ' : '  ')
+  + (e.nodeValue)
+  + (e.lastChild ? '\n</div>\n\n' : '<br/>\n'),
+
   // Inline
   "BOLD":          e => '<b>' + e.nodeValue + '</b>',
   "ITALIC":        e => '<i>' + e.nodeValue + '</i>',

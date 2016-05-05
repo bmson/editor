@@ -20,10 +20,11 @@
   "dependencies": {
     "react": "15.0.x",
     "react-dom": "15.0.x",
+    "immutable": "x.x.x",
     "babel-plugin-syntax-flow": "6.5.x",
     "babel-plugin-transform-object-rest-spread": "6.6.x",
     "babel-plugin-transform-class-properties": "6.6.x",
-    "draft-js": "0.5.x"
+    "draft-js": "0.7.x"
   },
   "babel": {
     "presets": ["es2015", "react"],

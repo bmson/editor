@@ -7,6 +7,7 @@ import { Editor, Toolbar, Preview, Compiler } from 'editor'
 import dictionary from './components/dictionary.jsx'
 import Highlight  from './components/highlight.jsx'
 import Blackout   from './components/blackout.jsx'
+import Sticky     from './components/sticky.jsx'
 
 // Module definition
 export default class App extends React.Component {
@@ -29,6 +30,7 @@ export default class App extends React.Component {
       <Toolbar state = {this.state.editor} onChange = {this.update}>
         <Highlight className = 'highlight' tooltip = 'Highlighter' />
         <Blackout  className = 'blackout'  tooltip = 'Blackout' />
+        <Sticky    className = 'sticky'    tooltip = 'Sticky note' />
       </Toolbar>
 
       <Preview value = { this.state.result } />
