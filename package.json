@@ -15,7 +15,7 @@
     "url": "https://github.com/bmson/editor/issues"
   },
   "devDependencies": {
-    "reqly-react": "0.2.x"
+    "reqly-react": "0.3.x"
   },
   "dependencies": {
     "react": "15.0.x",

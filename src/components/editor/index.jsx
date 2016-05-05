@@ -3,6 +3,9 @@ import React           from 'react'
 import { Editor }      from 'draft-js'
 import { EditorState } from 'draft-js'
 
+// Style dependencies
+import style from './stylesheet.css'
+
 // Module definition
 export default class extends React.Component {
 
@@ -12,8 +15,8 @@ export default class extends React.Component {
 
   // Render component
   render = () =>
-    <Editor onChange    = { this.props.onChange }
-            editorState = { this.props.state }
-            placeholder = { this.props.placeholder } />
+    <div className = { style.editor }>
+      <Editor onChange = { this.props.onChange } editorState = { this.props.state } placeholder = { this.props.placeholder } />
+    </div>
 
 }

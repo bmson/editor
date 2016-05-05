@@ -1,0 +1,21 @@
+.editor {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.editor :global .public-DraftEditorPlaceholder-root {
+  padding: 11px;
+
+  position: absolute;
+  pointer-events: none;
+
+  color: rgb(150, 150, 150);
+}
+
+.editor :global [role=textbox] {
+  padding: 10px;
+  min-height: 100px;
+
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 4px 4px 0 0;
+}

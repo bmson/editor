@@ -8,7 +8,12 @@ export default class OrderedList extends React.Component {
   // Event handler
   select(event) {
 
-    console.log('test')
+    // Collect props
+    const { state, onChange } = this.props
+
+    // Toogle inline element and send to onChange callback
+    const update = RichUtils.toggleInlineStyle(state, 'HIGHLIGHT')
+    onChange(update)
 
     // Prevent default event
     event.preventDefault()
