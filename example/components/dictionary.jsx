@@ -33,5 +33,6 @@ export default {
   "STRIKETHROUGH": e => '<strike>' + e.nodeValue + '</strike>',
   "CODE":          e => '<code>' + e.nodeValue + '</code>',
   "HIGHLIGHT":     e => '<span class="highlight">' + e.nodeValue + '</span>',
+  "BLACKOUT":      e => '<span class="blackout">' + (e.nodeValue).replace(/./g, '*') + '</span>',
 
 }

@@ -6,6 +6,18 @@ import { EditorState } from 'draft-js'
 // Style dependencies
 import style from './stylesheet.css'
 
+const styleMap = {
+  'HIGHLIGHT': {
+    background: 'rgb(255, 231, 154)'
+  },
+
+  'BLACKOUT': {
+    background: 'rgb(0, 0, 0)',
+    color: 'rgb(0, 0, 0)'
+  }
+};
+
+
 // Module definition
 export default class extends React.Component {
 
@@ -16,7 +28,12 @@ export default class extends React.Component {
   // Render component
   render = () =>
     <div className = { style.editor }>
-      <Editor onChange = { this.props.onChange } editorState = { this.props.state } placeholder = { this.props.placeholder } />
+
+      <Editor customStyleMap = { styleMap }
+              onChange       = { this.props.onChange }
+              editorState    = { this.props.state }
+              placeholder    = { this.props.placeholder } />
+
     </div>
 
 }
