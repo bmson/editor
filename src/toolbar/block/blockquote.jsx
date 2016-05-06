@@ -12,7 +12,7 @@ export default class Blockquote extends React.Component {
     const { state, onChange } = this.props
 
     // Toogle block element and send to onChange callback
-    const update = RichUtils.toggleBlockType(state, 'blockquote')
+    const update = RichUtils.toggleBlockType(state, 'BLOCKQUOTE')
     onChange(update)
 
     // Prevent default event

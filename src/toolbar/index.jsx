@@ -8,9 +8,9 @@ import Underline     from './inline/underline.jsx'
 import Strikethrough from './inline/strikethrough.jsx'
 import Code          from './inline/code.jsx'
 import Blockquote    from './block/blockquote.jsx'
-import UnorderedList from './block/unorderedList.jsx'
-import OrderedList   from './block/orderedList.jsx'
-import CodeBlock     from './block/codeBlock.jsx'
+import UnorderedList from './block/ul.jsx'
+import OrderedList   from './block/ol.jsx'
+import CodeBlock     from './block/pre.jsx'
 
 // Style dependencies
 import style from './stylesheet.css'

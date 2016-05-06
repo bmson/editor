@@ -12,7 +12,7 @@ export default class CodeBlock extends React.Component {
     const { state, onChange } = this.props
 
     // Toogle block element and send to onChange callback
-    const update = RichUtils.toggleBlockType(state, 'code-block')
+    const update = RichUtils.toggleBlockType(state, 'PRE')
     onChange(update)
 
     // Prevent default event

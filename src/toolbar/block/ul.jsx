@@ -12,7 +12,7 @@ export default class UnorderedList extends React.Component {
     const { state, onChange } = this.props
 
     // Toogle block element and send to onChange callback
-    const update = RichUtils.toggleBlockType(state, 'unordered-list-item')
+    const update = RichUtils.toggleBlockType(state, 'UL')
     onChange(update)
 
     // Prevent default event
