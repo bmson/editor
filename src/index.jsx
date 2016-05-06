@@ -1,8 +1,8 @@
 // Local dependencies
-import Editor   from './components/editor/'
-import Toolbar  from './components/toolbar/'
-import Preview  from './components/preview/'
-import Compiler from './components/compiler/'
+import Editor   from './editor/'
+import Toolbar  from './toolbar/'
+import Preview  from './preview/'
+import Compiler from './compiler/'
 
 // Exporter
 export { Editor, Toolbar, Preview, Compiler }

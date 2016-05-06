@@ -3,8 +3,6 @@ import React           from 'react'
 import { Editor }      from 'draft-js'
 import { EditorState } from 'draft-js'
 
-import { Map } from 'immutable'
-
 // Style dependencies
 import style from './stylesheet.css'
 
@@ -42,36 +40,6 @@ const myBlockRenderer = (contentBlock) => {
 
 }
 
-const myBlockRenderMap = () => {
-
-  return Map({
-    'unordered-list-item': {
-      element: 'li',
-      wrapper: <ul className='unordered-list-item' />
-    },
-    'ordered-list-item': {
-      element: 'li',
-      wrapper: <ol className='ordered-list-item' />
-    },
-    'blockquote': {
-      element: 'div',
-      wrapper: <figure className='blockquote' />
-    },
-    'code-block': {
-      element: 'div',
-      wrapper: <figure className='code-block' />
-    },
-    'sticky': {
-      element: 'div',
-      wrapper: <figure className='sticky' />
-    },
-    'unstyled': {
-      element: 'div',
-    },
-  })
-
-}
-
 // Module definition
 export default class extends React.Component {
 
@@ -79,12 +47,36 @@ export default class extends React.Component {
   static createEmpty       = (...args) => EditorState.createEmpty(...args)
   static createWithContent = (...args) => EditorState.createWithContent(...args)
 
+  // Element map
+  static elements = new Map
+
+  // Block map
+  static blockMap = {
+    get: (uid) => {
+
+      //
+      const exist = this.elements.has(uid)
+
+      //
+      if (!exist) {
+
+        this.map.set(key, {
+          element: 'div',
+          wrapper: <figure className = { key } />
+        })
+
+      //
+      } else return this.elements.get(key)
+
+    }
+  }
+
   // Render component
   render = () =>
     <div className = { style.editor }>
 
       <Editor customStyleMap  = { styleMap }
-              blockRendererFn = { myBlockRenderer }
+              blockRendererFn = { this.blockMap }
               blockStyleFn    = { e => e.getType() }
               blockRenderMap  = { myBlockRenderMap() }
               onChange        = { this.props.onChange }
