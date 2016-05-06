@@ -12,7 +12,7 @@ export default class OrderedList extends React.Component {
     const { state, onChange } = this.props
 
     // Toogle inline element and send to onChange callback
-    const update = RichUtils.toggleBlockType(state, 'sticky')
+    const update = RichUtils.toggleBlockType(state, 'STICKY')
     onChange(update)
 
     // Prevent default event

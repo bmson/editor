@@ -67,7 +67,6 @@ export default class extends React.Component {
     <div className = { style.editor }>
 
       <Editor customStyleMap  = { stylemap }
-              blockStyleFn    = { e => e.getType() }
               blockRenderMap  = { this.blockRenderMap }
               onChange        = { this.props.onChange }
               editorState     = { this.props.state }

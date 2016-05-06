@@ -26,7 +26,7 @@ export default {
   + (e.nodeValue)
   + (e.lastChild ? '</li>\n</ul>\n\n' : '</li>\n'),
 
-  "sticky": e =>
+  "STICKY": e =>
     (e.firstChild ? '<div class="sticky">\n  ' : '  ')
   + (e.nodeValue)
   + (e.lastChild ? '\n</div>\n\n' : '<br/>\n'),

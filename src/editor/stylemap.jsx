@@ -14,6 +14,14 @@ export default {
     color: 'rgb(0, 0, 0)'
   },
 
+  'UL': {
+    paddingLeft: '20px'
+  },
+
+  'OL': {
+    paddingLeft: '20px'
+  },
+
   'CODE': {
     margin: '0px 1px 1px 0px',
     padding: '0px 1px',
