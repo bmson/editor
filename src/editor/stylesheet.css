@@ -37,3 +37,8 @@
   border-left: 2px solid rgb(200, 200, 200);
   color: rgb(125, 125, 125);
 }
+
+.editor :global figure.unstyled {
+  margin: 0;
+  padding: 0;
+}

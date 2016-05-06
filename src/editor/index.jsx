@@ -26,19 +26,10 @@ const styleMap = {
     fontFamily: 'monospace',
     fontSize: '.9em',
     color: 'rgb(200, 0, 0)'
-  }
+  },
+
+
 };
-
-const myBlockRenderer = (contentBlock) => {
-
-  const type = contentBlock.getType();
-  if (type === 'sticky') {
-    return {
-      editable: true,
-    };
-  }
-
-}
 
 // Module definition
 export default class extends React.Component {
@@ -48,25 +39,23 @@ export default class extends React.Component {
   static createWithContent = (...args) => EditorState.createWithContent(...args)
 
   // Element map
-  static elements = new Map
+  elements = new Map
 
   // Block map
-  static blockMap = {
+  createBlocks = {
     get: (uid) => {
 
       //
       const exist = this.elements.has(uid)
 
       //
-      if (!exist) {
-
-        this.map.set(key, {
-          element: 'div',
-          wrapper: <figure className = { key } />
-        })
+      !exist && this.elements.set(uid, {
+        element: 'div',
+        wrapper: <figure className = { uid } />
+      })
 
       //
-      } else return this.elements.get(key)
+      return this.elements.get(uid)
 
     }
   }
@@ -76,9 +65,8 @@ export default class extends React.Component {
     <div className = { style.editor }>
 
       <Editor customStyleMap  = { styleMap }
-              blockRendererFn = { this.blockMap }
               blockStyleFn    = { e => e.getType() }
-              blockRenderMap  = { myBlockRenderMap() }
+              blockRenderMap  = { this.createBlocks }
               onChange        = { this.props.onChange }
               editorState     = { this.props.state }
               placeholder     = { this.props.placeholder } />
