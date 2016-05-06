@@ -19,26 +19,3 @@
   border: 1px solid rgb(200, 200, 200);
   border-radius: 4px 4px 0 0;
 }
-
-.editor :global figure.code-block {
-  margin: 10px 0;
-  padding: 5px;
-  background: rgb(240, 240, 240);
-  border: 1px solid rgb(220, 220, 220);
-  border-radius: 1px;
-  font-family: monospace;
-  font-size: .9em;
-  color: rgb(200, 0, 0);
-}
-
-.editor :global figure.blockquote {
-  margin: 10px 0;
-  padding: 0 0 0 10px;
-  border-left: 2px solid rgb(200, 200, 200);
-  color: rgb(125, 125, 125);
-}
-
-.editor :global figure.unstyled {
-  margin: 0;
-  padding: 0;
-}

@@ -5,31 +5,7 @@ import { EditorState } from 'draft-js'
 
 // Style dependencies
 import style from './stylesheet.css'
-
-const styleMap = {
-  'HIGHLIGHT': {
-    background: 'rgb(255, 231, 154)'
-  },
-
-  'BLACKOUT': {
-    background: 'rgb(0, 0, 0)',
-    color: 'rgb(0, 0, 0)'
-  },
-
-  'CODE': {
-    margin: '0 1px 1px 0',
-    padding: '0 1px',
-    display: 'inline-block',
-    background: 'rgb(240, 240, 240)',
-    border: '1px solid rgb(220, 220, 220)',
-    borderRadius: '1px',
-    fontFamily: 'monospace',
-    fontSize: '.9em',
-    color: 'rgb(200, 0, 0)'
-  },
-
-
-};
+import stylemap from './stylemap.jsx'
 
 // Module definition
 export default class extends React.Component {
@@ -39,23 +15,24 @@ export default class extends React.Component {
   static createWithContent = (...args) => EditorState.createWithContent(...args)
 
   // Element map
-  elements = new Map
+  elementMap = new Map
 
-  // Block map
-  createBlocks = {
+  // Block render
+  blockRenderMap = {
     get: (uid) => {
 
-      //
-      const exist = this.elements.has(uid)
+      // Get map and check if it includes the uid
+      const map   = this.elementMap
+      const exist = map.has(uid)
 
       //
-      !exist && this.elements.set(uid, {
+      !exist && map.set(uid, {
         element: 'div',
-        wrapper: <figure className = { uid } />
+        wrapper: <figure className = { uid } style = { stylemap[uid] } />
       })
 
-      //
-      return this.elements.get(uid)
+      // Return current map value
+      return map.get(uid)
 
     }
   }
@@ -64,9 +41,9 @@ export default class extends React.Component {
   render = () =>
     <div className = { style.editor }>
 
-      <Editor customStyleMap  = { styleMap }
+      <Editor customStyleMap  = { stylemap }
               blockStyleFn    = { e => e.getType() }
-              blockRenderMap  = { this.createBlocks }
+              blockRenderMap  = { this.blockRenderMap }
               onChange        = { this.props.onChange }
               editorState     = { this.props.state }
               placeholder     = { this.props.placeholder } />
