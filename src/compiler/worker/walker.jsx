@@ -2,14 +2,14 @@
 import splitter from './splitter.jsx'
 
 // Walk through array and split up when new style is found
-const walker = (input, { from, to, style }, { index, adjust } = { index: 0, adjust: 0 }) => {
+const walker = (input, { from, to, style, data }, { index, adjust } = { index: 0, adjust: 0 }) => {
 
   // clone array and get text length
   const clone  = [...input]
   const length = clone[index] && clone[index].text.length
 
   // Split input base on options
-  const { previous, current, next, array } = splitter(clone, { from, to, style }, { index, adjust })
+  const { previous, current, next, array } = splitter(clone, { from, to, style, data }, { index, adjust })
 
   // If we have not reach current node
   if (from - adjust >= length) {

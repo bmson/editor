@@ -6,7 +6,8 @@ export default ({ text, type }, dictionary) => {
 
   // Loop through types and call dictionary functions
   type.forEach(o => {
-    nodeValue = dictionary[o] && dictionary[o].call(this, { nodeValue }) || nodeValue
+    const data = o.data
+    nodeValue = dictionary[o.type] && dictionary[o.type].call(this, { nodeValue, data }) || nodeValue
   })
 
   // Return transpiled html

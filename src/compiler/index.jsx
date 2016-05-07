@@ -12,14 +12,16 @@ export default class {
   static modifier = (state, dictionary = html) => {
 
     // Get array of blocks
-    const content = state.getCurrentContent()
-    const blocks  = convertToRaw(content).blocks
+    const content   = state.getCurrentContent()
+    const converted = convertToRaw(content)
+    const blocks    = converted.blocks
+    const entityMap = converted.entityMap
 
     // Convert blocks to strings
     const compile = (element, index) => {
 
       // Add inline styles
-      const compiled = inline(element, dictionary)
+      const compiled = inline(element, entityMap, dictionary)
 
       // Add block styles
       return block(compiled, dictionary, {

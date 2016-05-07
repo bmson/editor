@@ -3,16 +3,31 @@ import walker    from './walker.jsx'
 import converter from './converter.jsx'
 
 // Module definition
-export default (block, dictionary = {}) => {
+export default (block, entityMap, dictionary = {}) => {
 
   // Create text block that we will loop through
   let text = [{
     text: block.text,
-    type: ['']
+    type: [{}]
   }]
 
-  // Get list of inline style ranges
-  const ranges = block.inlineStyleRanges
+  // Loop through entities and convert to an range object
+  const entityStyleRanges = (block.entityRanges).map(entity => {
+
+    // Get entity options from map
+    const attribute = entityMap[entity.key]
+
+    // Generate range object
+    return { offset: entity.offset,
+             length: entity.length,
+             style:  attribute.type,
+             data:   attribute.data }
+
+  })
+
+  // Get list of inline and entity style ranges
+  const ranges = [].concat(block.inlineStyleRanges, entityStyleRanges)
+  console.log(ranges)
 
   // Loop through ranges
   ranges.forEach(range => {
@@ -21,7 +36,8 @@ export default (block, dictionary = {}) => {
     const position = {
       from:  range.offset,
       to:    range.offset + range.length,
-      style: range.style
+      style: range.style,
+      data:  range.data
     }
 
     // Walk through text block and replace it with transform text

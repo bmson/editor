@@ -19,3 +19,20 @@
   border: 1px solid rgb(200, 200, 200);
   border-radius: 4px 4px 0 0;
 }
+
+
+.editor :global .PRE {
+  counter-reset: line;
+}
+
+.editor :global .PRE [data-block=true]:before {
+  padding: 0 5px 0 0;
+  margin-right: 10px;
+  width: 20px;
+  text-align: right;
+  counter-increment: line;
+  content: counter(line);
+  float: left;
+  border-right: 1px solid #ddd;
+  color: #888;
+}

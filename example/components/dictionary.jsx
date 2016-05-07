@@ -39,5 +39,6 @@ export default {
   "CODE":          e => '<code>' + e.nodeValue + '</code>',
   "HIGHLIGHT":     e => '<span class="highlight">' + e.nodeValue + '</span>',
   "BLACKOUT":      e => '<span class="blackout">' + (e.nodeValue).replace(/./g, '*') + '</span>',
+  "LINK":          e => '<a class="' + e.data.className + '">' + e.nodeValue + '</a>',
 
 }

@@ -1,7 +1,8 @@
 // Global dependencies
-import React           from 'react'
-import { Editor }      from 'draft-js'
-import { EditorState } from 'draft-js'
+import React            from 'react'
+import { Editor }       from 'draft-js'
+import { EditorState }  from 'draft-js'
+import { ContentState } from 'draft-js'
 
 // Style dependencies
 import style    from './stylesheet.css'
@@ -11,8 +12,11 @@ import stylemap from './stylemap.jsx'
 export default class extends React.Component {
 
   // Exposed API
-  static createEmpty       = (...args) => EditorState.createEmpty(...args)
-  static createWithContent = (...args) => EditorState.createWithContent(...args)
+  static createEmpty = (decorator) =>
+    EditorState.createEmpty(decorator)
+
+  static createWithContent = (text, decorator) =>
+    EditorState.createWithContent(ContentState.createFromText(text), decorator)
 
   // Element map
   elementMap = new Map

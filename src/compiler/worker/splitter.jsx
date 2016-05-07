@@ -3,7 +3,7 @@ import toggle  from './toggle.jsx'
 import divider from './divider.jsx'
 
 // Split current index into multiple
-export default (input, { from, to, style }, { index, adjust } = { index: 0, adjust: 0 }) => {
+export default (input, { from, to, style, data }, { index, adjust } = { index: 0, adjust: 0 }) => {
 
   // clone array and get object on index
   const array  = [...input]
@@ -15,7 +15,7 @@ export default (input, { from, to, style }, { index, adjust } = { index: 0, adju
   const eqTo   = to - adjust
 
   // Toggle current style
-  const toggledType = toggle(object.type, style)
+  const toggledType = toggle(object.type, style, data)
 
   // Split array based on position
   const previous = {
