@@ -5,9 +5,9 @@ import { Editor, Toolbar, Preview, Compiler } from 'editor'
 
 // Local dependencies
 import dictionary from './components/dictionary.jsx'
-import Highlight  from './components/highlight.jsx'
-import Blackout   from './components/blackout.jsx'
-import Sticky     from './components/sticky.jsx'
+import Highlight  from './components/toolbar/highlight.jsx'
+import Blackout   from './components/toolbar/blackout.jsx'
+import Sticky     from './components/toolbar/sticky.jsx'
 
 // Module definition
 export default class App extends React.Component {

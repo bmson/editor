@@ -4,7 +4,7 @@ import { Editor }       from 'draft-js'
 import { EditorState }  from 'draft-js'
 import { ContentState } from 'draft-js'
 
-// Style dependencies
+// Local dependencies
 import style    from './stylesheet.css'
 import stylemap from './stylemap.jsx'
 
@@ -16,21 +16,16 @@ export default class extends React.Component {
 
     // Create content state and fallback to empty string
     const contentState = ContentState.createFromText(text || '')
-
-    // Create editor state
     return EditorState.createWithContent(contentState, decorator)
 
   }
-
-  // Element map
-  elementMap = new Map
 
   // Block render
   blockRenderMap = {
     get: (uid) => {
 
       // Get map and check if it includes the uid
-      const map   = this.elementMap
+      const map   = this._map = this._map || new Map
       const exist = map.has(uid)
 
       // Return map value if it exists

@@ -1,10 +1,5 @@
 export default {
 
-  'unstyled': {
-    margin: '0px',
-    padding: '0px'
-  },
-
   'HIGHLIGHT': {
     background: 'rgb(255, 231, 154)',
     boxShadow: '1px 1px rgba(0, 0, 0, .2)',
@@ -14,14 +9,6 @@ export default {
   'BLACKOUT': {
     background: 'rgb(0, 0, 0)',
     color: 'rgb(0, 0, 0)'
-  },
-
-  'UL': {
-    paddingLeft: '20px'
-  },
-
-  'OL': {
-    paddingLeft: '20px'
   },
 
   'CODE': {
@@ -35,23 +22,5 @@ export default {
     fontSize: '.9em',
     color: 'rgb(200, 0, 0)'
   },
-
-  'PRE': {
-    margin: '10px 0px',
-    padding: '5px',
-    background: 'rgb(240, 240, 240)',
-    border: '1px solid rgb(220, 220, 220)',
-    borderRadius: '1px',
-    fontFamily: 'monospace',
-    fontSize: '.9em',
-    color: 'rgb(200, 0, 0)'
-  },
-
-  'BLOCKQUOTE': {
-    margin: '10px 0',
-    padding: '0 0 0 10px',
-    borderLeft: '2px solid rgb(200, 200, 200)',
-    color: 'rgb(125, 125, 125)'
-  }
 
 }

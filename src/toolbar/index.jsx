@@ -1,22 +1,34 @@
 // Global dependencies
-import React from 'react'
+import React     from 'react'
+import Component from './items/component.jsx'
+import style     from './stylesheet.css'
 
-// Local dependencies
-import Bold          from './inline/bold.jsx'
-import Italic        from './inline/italic.jsx'
-import Underline     from './inline/underline.jsx'
-import Strikethrough from './inline/strikethrough.jsx'
-import Code          from './inline/code.jsx'
-import Blockquote    from './block/blockquote.jsx'
-import UnorderedList from './block/ul.jsx'
-import OrderedList   from './block/ol.jsx'
-import CodeBlock     from './block/pre.jsx'
+// Inline dependencies
+import { Bold }          from './items/inline.jsx'
+import { Italic }        from './items/inline.jsx'
+import { Underline }     from './items/inline.jsx'
+import { Strikethrough } from './items/inline.jsx'
+import { Code }          from './items/inline.jsx'
 
-// Style dependencies
-import style from './stylesheet.css'
+// Block dependencies
+import { Blockquote } from './items/block.jsx'
+import { Ul }         from './items/block.jsx'
+import { Ol }         from './items/block.jsx'
+import { Pre }        from './items/block.jsx'
 
 // Module definition
 export default class extends React.Component {
+
+  // Exposed API
+  static Component     = Component
+  static Bold          = Bold
+  static Italic        = Italic
+  static Underline     = Underline
+  static UnorderedList = Ul
+  static OrderedList   = Ol
+  static Code          = Code
+  static Blockquote    = Blockquote
+  static CodeBlock     = Pre
 
   // Add props to children
   cloneChildren = (children, options) => {
@@ -35,14 +47,14 @@ export default class extends React.Component {
       </div>
 
       <div className = 'group'>
-        <UnorderedList className = { style.unorderedList } tooltip = 'Unordered list style' { ...this.props } />
-        <OrderedList   className = { style.orderedList }   tooltip = 'Ordered list style'   { ...this.props } />
+        <Ul className = { style.unorderedList } tooltip = 'Unordered list style' { ...this.props } />
+        <Ol className = { style.orderedList }   tooltip = 'Ordered list style'   { ...this.props } />
       </div>
 
       <div className = 'group'>
         <Code       className = { style.code }       tooltip = 'Code style'       { ...this.props } />
         <Blockquote className = { style.blockquote } tooltip = 'Blockquote style' { ...this.props } />
-        <CodeBlock  className = { style.codeBlock }  tooltip = 'Codeblock style'  { ...this.props } />
+        <Pre        className = { style.codeBlock }  tooltip = 'Codeblock style'  { ...this.props } />
       </div>
 
       { this.cloneChildren(this.props.children, { ...this.props }) }

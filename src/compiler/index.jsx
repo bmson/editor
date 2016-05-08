@@ -1,4 +1,4 @@
-// Dependencies
+// Global dependencies
 import { convertToRaw } from 'draft-js'
 
 // Local dependencies

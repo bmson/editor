@@ -1,7 +1,7 @@
 // Global dependencies
 import React from 'react'
 
-// Style dependencies
+// Local dependencies
 import style from './stylesheet.css'
 
 // Module definition
