@@ -16,7 +16,8 @@ export default class extends React.Component {
   componentWillReceiveProps = (props) => {
 
     //
-    const split  = props.value.split('\n')
+    const trim   = (props.value).trim()
+    const split  = trim.split('\n')
     const output = split.map((string, index) => <div key = { index }>{ string || String.fromCharCode(0) }</div>)
 
     //
