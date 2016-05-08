@@ -39,21 +39,21 @@ export default class extends React.Component {
         case 'UL':
           map.set(uid, {
             element: 'li',
-            wrapper: <ul className = { uid } />
+            wrapper: <ul className = { `${uid} block` } />
           })
         break
 
         case 'OL':
           map.set(uid, {
             element: 'li',
-            wrapper: <ol className = { uid } />
+            wrapper: <ol className = { `${uid} block` } />
           })
         break
 
         default:
           map.set(uid, {
             element: 'div',
-            wrapper: <figure className = { uid } />
+            wrapper: <figure className = { `${uid} block` } />
           })
         break
 

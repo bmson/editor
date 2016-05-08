@@ -20,6 +20,10 @@
   border-radius: 4px 4px 0 0;
 }
 
+.editor :global .block:first-child {
+  margin-top: 0 !important;
+}
+
 .editor :global .unstyled {
   margin: 0px;
   padding: 0px;
@@ -63,7 +67,7 @@
   font-family: monospace;
   font-size: .9em;
   color: rgb(200, 0, 0);
-counter-reset: line;
+  counter-reset: line;
 }
 
 .editor :global .PRE [data-block=true]:before {
