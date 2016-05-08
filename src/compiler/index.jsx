@@ -9,7 +9,7 @@ import html   from './dictionary/html.jsx'
 // Module definition
 export default class {
 
-  static modifier = (state, dictionary = html) => {
+  static run = (state, dictionary = html) => {
 
     // Get array of blocks
     const content = state.getCurrentContent()

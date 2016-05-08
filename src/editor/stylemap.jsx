@@ -6,7 +6,9 @@ export default {
   },
 
   'HIGHLIGHT': {
-    background: 'rgb(255, 231, 154)'
+    background: 'rgb(255, 231, 154)',
+    boxShadow: '1px 1px rgba(0, 0, 0, .2)',
+    borderRadius: '1px'
   },
 
   'BLACKOUT': {

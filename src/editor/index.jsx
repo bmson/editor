@@ -1,7 +1,8 @@
 // Global dependencies
-import React           from 'react'
-import { Editor }      from 'draft-js'
-import { EditorState } from 'draft-js'
+import React            from 'react'
+import { Editor }       from 'draft-js'
+import { EditorState }  from 'draft-js'
+import { ContentState } from 'draft-js'
 
 // Style dependencies
 import style    from './stylesheet.css'
@@ -11,8 +12,15 @@ import stylemap from './stylemap.jsx'
 export default class extends React.Component {
 
   // Exposed API
-  static createEmpty       = (...args) => EditorState.createEmpty(...args)
-  static createWithContent = (...args) => EditorState.createWithContent(...args)
+  static create = (text, decorator) => {
+
+    // Create content state and fallback to empty string
+    const contentState = ContentState.createFromText(text || '')
+
+    // Create editor state
+    return EditorState.createWithContent(contentState, decorator)
+
+  }
 
   // Element map
   elementMap = new Map
@@ -36,21 +44,21 @@ export default class extends React.Component {
         case 'UL':
           map.set(uid, {
             element: 'li',
-            wrapper: <ul className = { uid } style = { stylemap[uid] } />
+            wrapper: <ul className = { uid } />
           })
         break
 
         case 'OL':
           map.set(uid, {
             element: 'li',
-            wrapper: <ol className = { uid } style = { stylemap[uid] } />
+            wrapper: <ol className = { uid } />
           })
         break
 
         default:
           map.set(uid, {
             element: 'div',
-            wrapper: <figure className = { uid } style = { stylemap[uid] } />
+            wrapper: <figure className = { uid } />
           })
         break
 

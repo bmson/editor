@@ -14,13 +14,13 @@ export default class App extends React.Component {
 
   //
   state = {
-    editor: Editor.createEmpty(),
+    editor: Editor.create('some content'),
     result: null
   }
 
   //
   update = (editor) =>
-    this.setState({ editor, result: Compiler.modifier(editor, dictionary) })
+    this.setState({ editor, result: Compiler.run(editor, dictionary) })
 
   //
   render = () =>
