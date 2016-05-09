@@ -1,6 +1,6 @@
 .editor {
   font-family: sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .editor :global .public-DraftEditorPlaceholder-root {
@@ -67,7 +67,7 @@
   font-family: monospace;
   font-size: .9em;
   color: rgb(200, 0, 0);
-  counter-reset: line;
+  counter-reset: PRE_LINE;
 }
 
 .editor :global .PRE [data-block=true]:before {
@@ -75,8 +75,8 @@
   margin-right: 10px;
   width: 25px;
   text-align: right;
-  counter-increment: line;
-  content: counter(line);
+  counter-increment: PRE_LINE;
+  content: counter(PRE_LINE);
   float: left;
   border-right: 1px solid #ddd;
   color: #888;

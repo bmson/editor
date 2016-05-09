@@ -26,10 +26,12 @@ export default {
   + (e.nodeValue)
   + (e.lastChild ? '</li>\n</ul>\n\n' : '</li>\n'),
 
-  "STICKY": e =>
-    (e.firstChild ? '<div class="sticky">\n  ' : '  ')
-  + (e.nodeValue)
-  + (e.lastChild ? '\n</div>\n\n' : '<br/>\n'),
+  "TABLE": e =>
+    (e.firstChild ? '<table class="sticky">\n' : '')
+  + (e.index % 2 ? '' : '  <tr>\n')
+  + ('    <td>' + e.nodeValue + '</td>')
+  + (e.index % 2 && !e.lastChild ? '\n  </tr>' : '')
+  + (e.lastChild ? '\n  </tr>\n</table>\n\n' : '\n'),
 
   // Inline
   "BOLD":          e => '<b>' + e.nodeValue + '</b>',

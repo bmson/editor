@@ -15,18 +15,25 @@ export default class {
     const content = state.getCurrentContent()
     const blocks  = convertToRaw(content).blocks
 
+    // Count index of child elements in blocks
+    var index = 0
+
     // Convert blocks to strings
-    const compile = (element, index) => {
+    const compile = (element, step) => {
 
       // Add inline styles
       const compiled = inline(element, dictionary)
 
+      // Get the current and sibling blocks
+      const previous = blocks[step - 1] || {}
+      const current  = blocks[step + 0] || {}
+      const next     = blocks[step + 1] || {}
+
+      // Check the current index of block element
+      index = (previous.type === current.type) ? index + 1 : 0
+
       // Add block styles
-      return block(compiled, dictionary, {
-        previous: blocks[index - 1] || {},
-        current:  blocks[index + 0] || {},
-        next:     blocks[index + 1] || {},
-      })
+      return block(compiled, dictionary, { previous, current, next, index })
 
     }
 

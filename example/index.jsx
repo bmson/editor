@@ -1,13 +1,15 @@
 // Global dependencies
 import React    from 'react'
 import ReactDOM from 'react-dom'
+
+// Editor
 import { Editor, Toolbar, Preview, Compiler } from 'editor'
 
-// Local dependencies
+// Components
 import dictionary from './components/dictionary.jsx'
 import Highlight  from './components/toolbar/highlight.jsx'
 import Blackout   from './components/toolbar/blackout.jsx'
-import Sticky     from './components/toolbar/sticky.jsx'
+import Table      from './components/toolbar/table.jsx'
 
 // Module definition
 export default class App extends React.Component {
@@ -30,7 +32,7 @@ export default class App extends React.Component {
       <Toolbar state = {this.state.editor} onChange = {this.update}>
         <Highlight className = 'highlight' tooltip = 'Highlighter' />
         <Blackout  className = 'blackout'  tooltip = 'Blackout' />
-        <Sticky    className = 'sticky'    tooltip = 'Sticky note' />
+        <Table     className = 'table'    tooltip = 'Table' />
       </Toolbar>
 
       <Preview value = { this.state.result } />

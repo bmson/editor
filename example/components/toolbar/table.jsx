@@ -5,6 +5,6 @@ import { Toolbar } from 'editor'
 export default class Bold extends Toolbar.Component {
 
   onMouseDown = (state, element) =>
-    element.block(state, 'STICKY')
+    element.block(state, 'TABLE')
 
 }
