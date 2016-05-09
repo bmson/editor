@@ -49,10 +49,13 @@
 .editor :global .CODE {
   margin: 0px 1px 1px 0px;
   padding: 0px 1px;
+
   display: inline-block;
+
   background: rgb(240, 240, 240);
   border: 1px solid rgb(220, 220, 220);
   border-radius: 1px;
+
   font-family: monospace;
   font-size: .9em;
   color: rgb(200, 0, 0);
@@ -61,23 +64,28 @@
 .editor :global .PRE {
   margin: 10px 0px;
   padding: 5px;
+
+  counter-reset: PRE_LINE;
+
   background: rgb(240, 240, 240);
   border: 1px solid rgb(220, 220, 220);
   border-radius: 1px;
+
   font-family: monospace;
   font-size: .9em;
   color: rgb(200, 0, 0);
-  counter-reset: PRE_LINE;
 }
 
-.editor :global .PRE [data-block=true]:before {
+.editor :global .PRE [data-block]:before {
   padding: 0 5px 0 0;
   margin-right: 10px;
   width: 25px;
-  text-align: right;
+
   counter-increment: PRE_LINE;
   content: counter(PRE_LINE);
+
   float: left;
+  text-align: right;
   border-right: 1px solid #ddd;
   color: #888;
 }
@@ -85,6 +93,7 @@
 .editor :global .BLOCKQUOTE {
   margin: 10px 0;
   padding: 0 0 0 10px;
+
   border-left: 2px solid rgb(200, 200, 200);
   color: rgb(125, 125, 125);
 }

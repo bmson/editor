@@ -32,7 +32,7 @@ export default class App extends React.Component {
       <Toolbar state = {this.state.editor} onChange = {this.update}>
         <Highlight className = 'highlight' tooltip = 'Highlighter' />
         <Blackout  className = 'blackout'  tooltip = 'Blackout' />
-        <Table     className = 'table'    tooltip = 'Table' />
+        <Table     className = 'table'     tooltip = 'Table' />
       </Toolbar>
 
       <Preview value = { this.state.result } />
