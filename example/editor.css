@@ -25,22 +25,26 @@
   display: flex;
   flex-wrap: wrap;
 
-  border: 1px dotted silver;
+  border: 1px solid rgb(200, 200, 200);
+  background: rgb(230, 230, 230)
 }
 
 #target figure.TABLE [data-block] {
-  margin: 0 0 -1px 0;
+  margin: 0 0 0 0;
   padding: 10px;
   width: calc(50% - 20px);
 
   display: flex;
+
+  background: rgb(255, 255, 255);
 }
 
 #target figure.TABLE [data-block]:nth-child(odd) {
   width: calc(50% - 21px);
-  border-right: 1px dotted silver;
+  border-right: 1px solid rgb(200, 200, 200);
 }
 
-#target figure.TABLE [data-block]:nth-last-child(n+3) {
-  border-bottom: 1px dotted silver;
+#target figure.TABLE [data-block]:nth-child(odd):nth-last-child(n+3),
+#target figure.TABLE [data-block]:nth-child(even):nth-last-child(n+2) {
+  border-bottom: 1px solid rgb(200, 200, 200);
 }

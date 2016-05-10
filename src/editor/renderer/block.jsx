@@ -1,0 +1,52 @@
+// Global dependencies
+import React from 'react'
+
+// Module definition
+export default class Block {
+
+  // Create block map
+  map = new Map
+
+  // Getter
+  get = (uid) => {
+
+    // Get map and check if it includes the uid
+    const map   = this.map
+    const exist = map.has(uid)
+
+    // Return map value if it exists
+    if (exist) {
+      return map.get(uid)
+    }
+
+    // Create map value based on uid
+    switch (uid) {
+
+      case 'UL':
+        map.set(uid, {
+          element: 'li',
+          wrapper: <ul className = { `${uid} block` } />
+        })
+      break
+
+      case 'OL':
+        map.set(uid, {
+          element: 'li',
+          wrapper: <ol className = { `${uid} block` } />
+        })
+      break
+
+      default:
+        map.set(uid, {
+          element: 'div',
+          wrapper: <figure className = { `${uid} block` } />
+        })
+      break
+
+    }
+
+    // Return current map value
+    return map.get(uid)
+
+  }
+}

@@ -16,6 +16,7 @@
 
 .preview :global .selection div {
   padding: 5px 10px;
+
   display: inline-block;
   border-right: 1px solid rgb(230, 230, 230);
 }
@@ -23,6 +24,7 @@
 .preview :global .output {
   margin: 0;
   padding: 10px;
+
   counter-reset: PREVIEW_LINE;
 }
 
@@ -30,10 +32,13 @@
   padding: 0 5px 0 0;
   margin-right: 10px;
   width: 25px;
-  text-align: right;
+
   counter-increment: PREVIEW_LINE;
   content: counter(PREVIEW_LINE);
+
   float: left;
-  border-right: 1px solid #ddd;
+
+  text-align: right;
   color: #888;
+  border-right: 1px solid #ddd;
 }

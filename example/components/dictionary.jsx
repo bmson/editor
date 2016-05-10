@@ -27,7 +27,7 @@ export default {
   + (e.lastChild ? '</li>\n</ul>\n\n' : '</li>\n'),
 
   "TABLE": e =>
-    (e.firstChild ? '<table class="sticky">\n' : '')
+    (e.firstChild ? '<table>\n' : '')
   + (e.index % 2 ? '' : '  <tr>\n')
   + ('    <td>' + e.nodeValue + '</td>')
   + (e.index % 2 && !e.lastChild ? '\n  </tr>' : '')
